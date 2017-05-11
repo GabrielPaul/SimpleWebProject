@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	<constant name="struts.devMode" value="true" />
+	<!--临时存放文件的路径-->
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<!-- 所有的Action定义都应该放在package下 -->	
+	<package name="gabriel" extends="struts-default">
+		<action name="addSeller" class="action.SellerAction" method="registerAsSeller">
+			<result>WEB-INF/content/sellerLogin.jsp</result>
+		</action>
+		<action name="verifySeller" class="action.SellerAction" method="verifyLogin">
+			<result name="success">WEB-INF/content/sellerLoginSuccess.jsp</result>
+			<result name="error">WEB-INF/content/error.jsp</result>
+		</action>
+		<action name="addGoodsAction" class="action.GoodsAction" method="addGoods">
+			<result name="success">WEB-INF/content/success.jsp</result>
+			<result name="error">WEB-INF/content/error.jsp</result>
+		</action>
+		<action name="viewOnselling" class="action.SellerAction" method="viewOnselling">
+			<result name="success">WEB-INF/content/listOnsellingGoods.jsp</result>
+		</action>
+		<action name="underCarriageGoods" class="action.GoodsAction" method="underCarriage">
+			<result type="chain">viewOnselling</result>
+		</action>
+		<action name="viewUnderCarriage" class="action.SellerAction" method="viewUnderCarriage">
+			<result name="success">WEB-INF/content/listUnderCarriageGoods.jsp</result>
+		</action>
+		<action name="setOnsellingGoods" class="action.GoodsAction" method="setOnselling">
+			<result type="chain">viewUnderCarriage</result>
+		</action>
+		<action name="updateSellerInfo" class="action.SellerAction" method="updateSeller">
+			<result name="success">WEB-INF/content/sellerLoginSuccess.jsp</result>
+		</action>
+		<action name="addBuyer" class="action.BuyerAction" method="addBuyer">
+			<result name="success">WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="verifyBuyer" class="action.BuyerAction" method="verifyLogin">
+			<result name="success">WEB-INF/content/buyerLoginSuccess.jsp</result>
+			<result name="error">WEB-INF/content/error.jsp</result>
+		</action>
+		<action name="buyerViewOnselling" class="action.GoodsAction" method="viewAllOnselling">
+			<result name="success">WEB-INF/content/listAllOnselling.jsp</result>
+		</action>
+		<action name="detailOfGoodsAndSeller" class="action.GoodsAction" method="detailOfGoodsSeller">
+			<result>WEB-INF/content/detailOfGoods.jsp</result>
+		</action>
+		<action name="updateBuyerInfo" class="action.BuyerAction" method="updateBuyer">
+			<result>WEB-INF/content/buyerLoginSuccess.jsp</result>
+		</action>
+		<action name="*_jpg">
+			<result>/WEB-INF/content/{1}.jpg</result>
+		</action>
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
