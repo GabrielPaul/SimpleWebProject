@@ -34,14 +34,14 @@ public class BuyerAction extends ActionSupport{
 	public String addBuyer(){
 		int result = buyerService.addBuyer(buyer);
 		if(result > 0){
-			ServletActionContext.getRequest().getSession().setAttribute("buyerName", buyer.getUsername());
+			ServletActionContext.getRequest().getSession().setAttribute("userName", buyer.getUsername());
 			return SUCCESS;
 		}
 		return ERROR;
 	}
 	public String verifyLogin(){
 		if(!(buyerService.findBuyer(buyer).isEmpty())){
-			ServletActionContext.getRequest().getSession().setAttribute("buyerName", buyer.getUsername());
+			ServletActionContext.getRequest().getSession().setAttribute("userName", buyer.getUsername());
 			return SUCCESS;
 		}
 		ServletActionContext.getRequest().getSession().setAttribute("message", "Login failed!");

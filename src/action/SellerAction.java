@@ -50,8 +50,10 @@ public class SellerAction extends ActionSupport{
 	}
 	public String registerAsSeller(){
 		int result = sellerService.addSeller(seller);
-		if(result >0)
+		if(result >0) {
+			ServletActionContext.getRequest().getSession().setAttribute("userName", seller.getUsername());
 			return SUCCESS;
+		}
 		return ERROR;
 	}
 	public String verifyLogin(){

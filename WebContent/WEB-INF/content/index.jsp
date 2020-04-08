@@ -7,7 +7,7 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ page pageEncoding="utf-8" language="java" errorPage=""%>
 <%
-	String inputUname = (String) session.getAttribute("inputUname");
+	String inputUname = (String) session.getAttribute("userName");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,21 +48,51 @@
 					if (inputUname == null) {
 				%>
 				<div class="span6">
-					欢迎光临！请您<strong> <a href="#login" role="button"
+					卖家登陆请点击<strong> <a href="#sellerLogin" role="button"
 						data-toggle="modal" style="padding-right: 0"> <span
-							class="btn btn-link">登录</span>
+							class="btn btn-link">这里</span>
 					</a></strong>
-
-
-
+					<div id="sellerLogin" class="modal hide fade in" tabindex="-1"
+								role="dialog" aria-labelledby="login" aria-hidden="false">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+									<h3>卖家登录</h3>
+								</div>
+								<div class="modal-body">
+									<s:form action="verifyBuyer" enctype="multipart/form-data"
+										theme="bootstrap" cssClass="form">
+										<div class="form-group">
+											<div class="col-sm-6">
+												<s:textfield type="text" id="inputUname" placeholder="用户名"
+													name="buyer.username" class="form-control" />
+											</div>
+											<div class="col-sm-6">
+												<s:password type="password" id="inputPwd" placeholder="密码"
+													name="buyer.password" />
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-6">
+												<button type="submit" class="btn btn-success">登录</button>
+												<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
+											</div>
+											<div class="col-sm-6">
+												<a href="register">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+													href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
+											</div>
+										</div>
+									</s:form>
+								</div>
+							</div>
 				</div>
 				<%
 					} else {
 				%>
 
 				<div class="span6">
-					欢迎光临！<strong> <a href="Umessage.jsp" name="loginname"><%=inputUname%></a><a
-						href="loginout.jsp">&nbsp;/&nbsp;退出</a></strong>
+					欢迎光临！<strong> <a href="index" name="loginname"><%=inputUname%></a><a
+						href="loginout">&nbsp;/&nbsp;退出</a></strong>
 				</div>
 				<%
 					}
@@ -93,10 +123,13 @@
 						<button type="submit" id="submitButton" class="btn btn-primary">查询</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
-						<li><a href="sellerLogin">我想卖</a></li>
+						<li><a href="registerForSelling">成为卖家</a></li>
 						<li><a href="normal.jsp">出售记录</a></li>
-						<li><a href="contact.jsp">淘宝记录</a></li>
-						<li><a href="contact.jsp">投诉建议</a></li>
+						<li><a href="contact.jsp">浏览记录</a></li>
+						<li><a href="contact.jsp">建议</a></li>
+						<%
+							if (inputUname == null) {
+						%>
 						<li><a href="#login" role="button" data-toggle="modal"
 							style="padding-right: 0"> <span
 								class="btn btn-large btn-success">登录</span>
@@ -127,13 +160,15 @@
 												<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
 											</div>
 											<div class="col-sm-6">
-												<a href="registerAsBuyer">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
-													href="#">&nbsp; &nbsp; 忘记密码?</a>
+												<a href="register">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+													href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
 											</div>
 										</div>
 									</s:form>
 								</div>
-							</div></li>
+							</div>
+						</li>
+						<%} %>
 					</ul>
 				</div>
 			</div>

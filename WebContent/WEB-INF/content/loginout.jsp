@@ -12,7 +12,7 @@
         <title>退出登录</title>
     </head>
     <body>
-       <% session.removeAttribute( "inputUname");
-        response.sendRedirect("index.jsp");%>
+       <% session.removeAttribute( "userName");
+        response.sendRedirect("index");%>
     </body>
 </html>

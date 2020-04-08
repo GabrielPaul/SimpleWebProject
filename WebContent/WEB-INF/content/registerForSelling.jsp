@@ -244,13 +244,15 @@
 					</ul>
 					<!-- 嵌套框========================== -->
 					<div class="well">
-						<s:form action="addBuyer" enctype="multipart/form-data"
+						<s:form action="addSeller" enctype="multipart/form-data"
 							theme="bootstrap" cssClass="form-horizontal"
-							label="注册">
-							<s:textfield label="用户名*" name="buyer.username" cssClass="input-sm"
+							label="注册为卖家">
+							<s:textfield label="用户名*" name="seller.username" cssClass="input-sm"
 								elementCssClass="col-sm-3" tooltip="Enter your Name here" />
-							<s:password label="密码*" name="buyer.password"
+							<s:password label="密码*" name="seller.password"
 								tooltip="Enter your Password here" />
+							<s:textfield label="手机号码*" name="seller.phoneNum" cssClass="input-sm"
+								elementCssClass="col-sm-3" tooltip="Enter your cellPhone number here" />								
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-md-4">
 									<br/>
