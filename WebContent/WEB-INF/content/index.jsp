@@ -124,9 +124,9 @@
 					</form>
 					<ul id="topMenu" class="nav pull-right">
 						<li><a href="registerForSelling">成为卖家</a></li>
-						<li><a href="normal.jsp">出售记录</a></li>
-						<li><a href="contact.jsp">浏览记录</a></li>
-						<li><a href="contact.jsp">建议</a></li>
+						<li><a href="product_sell">上架物品</a></li>
+						<li><a href="#">浏览记录</a></li>
+						<li><a href="contact">建议</a></li>
 						<%
 							if (inputUname == null) {
 						%>
