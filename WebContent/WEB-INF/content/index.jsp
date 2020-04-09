@@ -186,16 +186,31 @@
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">
 			<!-- 轮播（Carousel）项目 -->
+			
+			
 			<div class="carousel-inner">
-				<div class="item active">
+				<div class="item active" >
 					<div class="container">
-						<a href="product_details.jsp"> <img style="width: 100%"
-							src="themes/images/carousel/1.jpg" alt="special offers" />
+						<a href="product_details.jsp">
+							<img style="width: 100%"  src="themes/images/carousel/2.jpg"  alt="special offers"/>
 						</a>
 						<!-- 标题 -->
 						<div class="carousel-caption">标题 1</div>
 					</div>
 				</div>
+				<s:iterator value="carouel">
+				<div class="item" >
+					<div class="container">
+						<a href="product_details.jsp">
+							<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
+						</a>
+						<!-- 标题 -->
+						<div class="carousel-caption">标题 1</div>
+					</div>
+				</div>
+				
+				</s:iterator>
+				<!-- 
 				<div class="item">
 					<div class="container">
 						<a href="product_details.jsp"> <img style="width: 100%"
@@ -218,6 +233,7 @@
 						</div>
 					</div>
 				</div>
+				 -->
 			</div>
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 			<a class="right carousel-control" href="#myCarousel"
