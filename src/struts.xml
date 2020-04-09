@@ -17,7 +17,7 @@
 			<result name="error">WEB-INF/content/error.jsp</result>
 		</action>
 		<action name="addGoodsAction" class="action.GoodsAction" method="addGoods">
-			<result name="success">WEB-INF/content/success.jsp</result>
+			<result name="success">WEB-INF/content/product_sell_addSuccess.jsp</result>
 			<result name="error">WEB-INF/content/error.jsp</result>
 		</action>
 		<action name="viewOnselling" class="action.SellerAction" method="viewOnselling">

@@ -36,6 +36,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	
+	<meta http-equiv="refresh" content="3;url=product_sell">
   </head>
 <body>
     <!-- 最顶层================================================== -->
@@ -112,7 +114,7 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index"><img src="themes/images/logo1.png" alt="旧物新用"/></a>
+    <a class="brand" href="index.html"><img src="themes/images/logo1.png" alt="旧物新用"/></a>
 		<form class="form-inline navbar-search" method="post" action="products.html" >
 		<input id="srchFld" class="srchTxt" type="text" name="inputselect"/> <!-- 输入查询框 -->
 		  <select class="srchTxt" name="inputselect1"><!-- 物品分类选择框 -->
@@ -126,7 +128,7 @@
 		  <button type="submit" id="submitButton" class="btn btn-primary">查询</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
- <li class=""><a href="product_sell.html">上架物品</a></li>
+ <li class=""><a href="product_sell.html">我想卖</a></li>
 	 <li class=""><a href="normal.html">出售记录</a></li>
 	 <li class=""><a href="contact.html">淘宝记录</a></li>
           <li class=""><a href="contact.html">投诉建议</a></li>
@@ -197,165 +199,15 @@
 <!-- Sidebar end=============================================== -->
 
 	<div class="span9">
-    <ul class="breadcrumb">
-    <li><a href="index.html">旧物新用</a> <span class="divider">/</span></li>
-    <li><a href="products.html">我想卖</a> </li>
-  
-    </ul>	
 	<div class="row">	
           <div class="span9">
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade active in" id="home">
-			  <h4>商品详细信息</h4>
-			  <s:form action="addGoodsAction" enctype="multipart/form-data" method="post">
-			 	 <table align="left" width="50%" border="0">
-			 	 <tr>
-			 	 	<td>
-			  		<s:textfield type="s:textfield " id="inputUname" label="卖家" value="%{#session.sellerName}"
-								name="seller.username" class="form-control" readonly="true"/>
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>				 
-					<s:textfield type="text" id="goodsName" label="商品名称"
-						name="goods.goodsName" class="form-control" />
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>				 	
-			        <s:select name="category" label="商品类型"
-         				list="{'书籍','衣物','鞋子','裤子','运动相关','生活用品','数码产品','其他'}" />
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>         				
-					<s:select name="goods.degreeOld" label="几成新"
-							list="{10,9,8,7,6,5,4,3,2,1}" />
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>							
-					<s:select name="goods.onSellTime" label="上架几个月"
-							list="{1,2,3}" />
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>							
-					<s:textfield type="text" id="goodsName" label="售价（元）"
-						name="goods.price" class="form-control" />
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>						
-					<s:file name="images" label="上传照片"/>
-					</td>
-				 </tr>
-			 	 <tr>
-			 	 	<td>					
-					<s:textarea type="text" id="description" label="详细描述"
-						name="goods.description" class="form-control" />
-					</td>
-				 </tr>				
-			  		<s:submit align="center" value="确认上架" />
-			  		</table>
-			   </s:form>
-			  
-			  <!-- 
-                <table class="table table-bordered">
-				<tbody>		
-				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">商品名称：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Pname"></td></tr>
-                                <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">商品类型：</td><td style="text-align:center" class="techSpecTD2">  
-                                    <select class="span1" name="Producttype">			
-                                        <option >手机 </option>
-                                           <option >电脑 </option>
-                                           <option >数码相机 </option>
-                                           <option >衣物</option> 
-                                           <option >书籍</option>
-                                           <option >生活用品</option>
-                                    </select>
-                                    <input type="text" id="inputEmail"  name="Pname">
-                                    </td></tr>
-				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">颜色：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Uname"></td></tr>
-				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">尺寸：</td><td style="text-align:center"  class="techSpecTD2">   <input type="text" id="inputEmail"  name="Uname"></td></tr>
-                                <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">新旧程度：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail" name="Uname"></td></tr>
-				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">生产日期：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Uname"></td></tr>
-				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">是否三包：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Uname"></td></tr>
-                                <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">上架时间：</td><td style="text-align:center" class="techSpecTD2">  
-                                    <select class="span1" name="month">				
-					<option value="1">1&nbsp;&nbsp;</option>
-					<option value="2">2&nbsp;&nbsp;</option>
-					<option value="3">3&nbsp;&nbsp;</option>
-					<option value="4">4&nbsp;&nbsp;</option>
-					<option value="5">5&nbsp;&nbsp;</option>
-					<option value="6">6&nbsp;&nbsp;</option>
-					<option value="7">7&nbsp;&nbsp;</option>
-                                        <option value="8">8&nbsp;&nbsp;</option>
-                                        <option value="9">9&nbsp;&nbsp;</option>
-                                        <option value="10">10&nbsp;&nbsp;</option>
-                                        <option value="11">11&nbsp;&nbsp;</option>
-                                        <option value="12">12&nbsp;&nbsp;</option>
-			</select>
-                                        &nbsp;&nbsp;<strong>月</strong>&nbsp;&nbsp;
-			<select class="span1" name="days">				
-					<option value="1">1&nbsp;&nbsp;</option>
-					<option value="2">2&nbsp;&nbsp;</option>
-					<option value="3">3&nbsp;&nbsp;</option>
-					<option value="4">4&nbsp;&nbsp;</option>
-					<option value="5">5&nbsp;&nbsp;</option>
-					<option value="6">6&nbsp;&nbsp;</option>
-					<option value="7">7&nbsp;&nbsp;</option>
-                                        <option value="8">8&nbsp;&nbsp;</option>
-                                        <option value="9">9&nbsp;&nbsp;</option>
-                                        <option value="10">10&nbsp;&nbsp;</option>
-                                        <option value="11">11&nbsp;&nbsp;</option>
-                                        <option value="12">12&nbsp;&nbsp;</option>
-                                        <option value="13">13&nbsp;&nbsp;</option>
-					<option value="14">14&nbsp;&nbsp;</option>
-					<option value="15">15&nbsp;&nbsp;</option>
-					<option value="16">16&nbsp;&nbsp;</option>
-					<option value="17">17&nbsp;&nbsp;</option>
-					<option value="18">18&nbsp;&nbsp;</option>
-					<option value="19">19&nbsp;&nbsp;</option>
-                                        <option value="20">20&nbsp;&nbsp;</option>
-                                        <option value="21">21&nbsp;&nbsp;</option>
-                                        <option value="22">22&nbsp;&nbsp;</option>
-                                        <option value="23">23&nbsp;&nbsp;</option>
-                                        <option value="24">24&nbsp;&nbsp;</option>
-                                        <option value="25">25&nbsp;&nbsp;</option>
-					<option value="26">26&nbsp;&nbsp;</option>
-					<option value="27">27&nbsp;&nbsp;</option>
-                                        <option value="28">28&nbsp;&nbsp;</option>
-                                        <option value="29">29&nbsp;&nbsp;</option>
-                                        <option value="30">30&nbsp;&nbsp;</option>
-                                        <option value="31">31&nbsp;&nbsp;</option>
-			</select>
-			         &nbsp;&nbsp;<strong>日</strong>
-                                    </td></tr>
-                                <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">您的用户名：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Uname"></td></tr>
-                                <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">您的住址：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail" name="Uname"></td></tr>
-                                 <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">您的联系方式：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail" name="Uname"></td></tr>
-                                  <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">您的详细描述：</td><td style="text-align:center" class="techSpecTD2">
-                                       <div class="control-group">
-                                             <textarea rows="3" placeholder="具体描述" id="textarea" class="input-xlarge"></textarea>
-                                    </div> </td></tr>
-           <tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">上传宝贝照片：</td><td style="text-align:center" class="techSpecTD2">  
-                <input type="file" id="picPath" name="doc" onchange="PreviewImage('Preview',this,120,120);" />
-                <div id="Preview" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);">
-                   </div>
-               </td></tr>
-           <tr>
-                     <td colspan="6" style="text-align:center">
-                                       <div class="control-group">
-					<div class="controls">
-					  <button type="submit" class="btn">确认上架</button>
-					</div>
-				  </div>
-                     </td>
-                </tr>
-				</tbody>
-				</table>
-				 -->
-				 
+			  <h4>待售物品添加成功，即将3S后自动跳转到上架物品界面。。。</h4>
+				<br/>
+			  	点击<strong><a href="index">这里</a></strong>，返回主页
+			 
+				
               </div>
 		
 		</div>
@@ -494,35 +346,10 @@
                         Preview.style.height = height;
                     }
                 } catch (e) {
-                    //alert("请上传正确的图片格式");
+                    alert("请上传正确的图片格式");
                 }
             }
         }
-        
-        function addMore()
-        {
-           var td = document.getElementById("more");
-            
-            var br = document.createElement("br");
-            var input = document.createElement("input");
-            var button = document.createElement("input");
-            
-            input.type = "file";
-            input.name = "images";
-            
-            button.type = "button";
-            button.value = "Remove";
-            
-            button.onclick = function()
-            {
-                td.removeChild(br);
-                td.removeChild(input);
-                td.removeChild(button);
-            }
-            td.appendChild(br);
-            td.appendChild(input);
-            td.appendChild(button);
-       }
     </script>
 
 

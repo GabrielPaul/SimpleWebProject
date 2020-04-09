@@ -43,73 +43,72 @@
 	<!-- 最顶层================================================== -->
 	<div id="header">
 		<div class="container">
-			<div id="welcomeLine" class="row">
+		<div id="welcomeLine" class="row">
 
-				<%
-					if (buyerName == null && sellerName == null) {
-				%>
-				<div class="span6">
-					卖家登陆请点击<strong> <a href="#sellerLogin" role="button"
-						data-toggle="modal" style="padding-right: 0"> <span
-							class="btn btn-link">这里</span>
-					</a></strong>
-					<div id="sellerLogin" class="modal hide fade in" tabindex="-1"
-								role="dialog" aria-labelledby="login" aria-hidden="false">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-									<h3>卖家登录</h3>
-								</div>
-								<div class="modal-body">
-									<s:form action="verifySeller" enctype="multipart/form-data"
-										theme="bootstrap" cssClass="form">
-										<div class="form-group">
-											<div class="col-sm-6">
-												<s:textfield type="text" id="inputUname" placeholder="用户名"
-													name="seller.username" class="form-control" />
-											</div>
-											<div class="col-sm-6">
-												<s:password type="password" id="inputPwd" placeholder="密码"
-													name="seller.password" />
-											</div>
-										</div>
-										<s:token />
-										<div class="form-group">
-											<div class="col-sm-6">
-												<button type="submit" class="btn btn-success">登录</button>
-												<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
-											</div>
-											<div class="col-sm-6">
-												<a href="registerForSelling">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
-													href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
-											</div>
-										</div>
-									</s:form>
-								</div>
+			<%
+				if (buyerName == null && sellerName == null) {
+			%>
+			<div class="span6">
+				卖家登陆请点击<strong> <a href="#sellerLogin" role="button"
+					data-toggle="modal" style="padding-right: 0"> <span
+						class="btn btn-link">这里</span>
+				</a></strong>
+				<div id="sellerLogin" class="modal hide fade in" tabindex="-1"
+							role="dialog" aria-labelledby="login" aria-hidden="false">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h3>卖家登录</h3>
 							</div>
-				</div>
-				<%
-					}
-					if(sellerName !=null && buyerName ==null){
-				%>
-				<div class="span6">
-					欢迎，掌柜的<strong> <a href="index" name="loginname"><%=sellerName%></a><a
-						href="loginout">&nbsp;/&nbsp;退出</a></strong>
-				</div>
-				<%
-					}
-				%>
-				<%
-					if(buyerName !=null && sellerName ==null){
-				%>
-				<div class="span6">
-					欢迎光临！客官<strong> <a href="index" name="loginname"><%=buyerName%></a><a
-						href="loginout">&nbsp;/&nbsp;退出</a></strong>
-				</div>
-				<%
-					}
-				%>
+							<div class="modal-body">
+								<s:form action="verifySeller" enctype="multipart/form-data"
+									theme="bootstrap" cssClass="form">
+									<div class="form-group">
+										<div class="col-sm-6">
+											<s:textfield type="text" id="inputUname" placeholder="用户名"
+												name="seller.username" class="form-control" />
+										</div>
+										<div class="col-sm-6">
+											<s:password type="password" id="inputPwd" placeholder="密码"
+												name="seller.password" />
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<button type="submit" class="btn btn-success">登录</button>
+											<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
+										</div>
+										<div class="col-sm-6">
+											<a href="registerForSelling">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+												href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
+										</div>
+									</div>
+								</s:form>
+							</div>
+						</div>
 			</div>
+			<%
+				}
+				if(sellerName !=null && buyerName ==null){
+			%>
+			<div class="span6">
+				欢迎，掌柜的<strong> <a href="index" name="loginname"><%=sellerName%></a><a
+					href="loginout">&nbsp;/&nbsp;退出</a></strong>
+			</div>
+			<%
+				}
+			%>
+			<%
+				if(buyerName !=null && sellerName ==null){
+			%>
+			<div class="span6">
+				欢迎光临！客官<strong> <a href="index" name="loginname"><%=buyerName%></a><a
+					href="loginout">&nbsp;/&nbsp;退出</a></strong>
+			</div>
+			<%
+				}
+			%>
+		</div>
 			<!-- 导航栏 ================================================== -->
 			<div id="logoArea" class="navbar">
 				<a id="smallScreen" data-target="#topMenu" data-toggle="collapse"
@@ -166,7 +165,7 @@
 													name="buyer.password" />
 											</div>
 										</div>
-										<s:token />
+										<!--<s:token /> -->
 										<div class="form-group">
 											<div class="col-sm-6">
 												<button type="submit" class="btn btn-success">登录</button>

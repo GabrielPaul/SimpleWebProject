@@ -1,6 +1,7 @@
 package Service.Imp;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,19 +70,29 @@ public class GoodsServiceImp implements GoodsService{
 	@Override
 	public List<String> getPicName(List<File> images,
 			List<String> imagesContextType, List<String> imagesFileName,Seller seller) {
-		String backupPath = "E:\\College\\Collage3_1\\JAVA_EE\\workspace\\ReuseSystemV1\\WebContent\\WEB-INF\\images";
+		//设置上传图片备份路径
+		String backupPath = "C:\\Users\\Administrator\\Desktop\\new_file\\images";
 		List<String> changedFileName = new ArrayList<String>();
 		for(int i=0;i < images.size();i++){
 			changedFileName.add(seller.getUsername()+"_" + new java.util.Date().getTime()+getExtention(imagesFileName.get(i)));
 			String dstPath=ServletActionContext.getServletContext().getRealPath("/images");
+			System.out.println(dstPath);
 			File dstFile = new File(dstPath);
 			if(!dstFile.exists()){
 				dstFile.mkdirs();											//创建多级目录
 				CopyDirection.picCopy(backupPath, dstFile.getAbsolutePath()); 				//从备份文件拷贝到部署路径
 			}
 			File dstFilePic = new File(dstPath,changedFileName.get(i));		//在部署路径创建pic文件对象
+			if(!dstFilePic.exists()) {
+				try {
+					dstFilePic.createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			CopyDirection.picCopy(images.get(i),dstFilePic);				//拷贝文件内容
-			CopyDirection.picCopy(images.get(i),new File(backupPath,changedFileName.get(i)));		//备份文件
+			CopyDirection.picCopy(images.get(i),new File(backupPath,changedFileName.get(i)));	//备份文件
 		}
 		return changedFileName;
 	}

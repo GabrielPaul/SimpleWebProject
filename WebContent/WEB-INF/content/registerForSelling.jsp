@@ -1,6 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ page pageEncoding="utf-8" language="java" errorPage=""%>
+<%
+	String buyerName = (String) session.getAttribute("buyerName");
+	String sellerName = (String) session.getAttribute("sellerName");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,23 +50,72 @@
 	<div id="header">
 		<div class="container">
 			<div id="welcomeLine" class="row">
-				<div class="span6">
-					欢迎光临！请您<strong> <a href="#">登录</a></strong>
-				</div>
-				<div class="span6">
-					<div class="pull-right">
-						<!--a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a-->
-						<a href="product_summary.html"><span
-							class="btn btn-mini btn-primary"><i
-								class="icon-shopping-cart icon-white"></i> 我的购物车 </span> </a>
-					</div>
-				</div>
+
+			<%
+				if (buyerName == null && sellerName == null) {
+			%>
+			<div class="span6">
+				卖家登陆请点击<strong> <a href="#sellerLogin" role="button"
+					data-toggle="modal" style="padding-right: 0"> <span
+						class="btn btn-link">这里</span>
+				</a></strong>
+				<div id="sellerLogin" class="modal hide fade in" tabindex="-1"
+							role="dialog" aria-labelledby="login" aria-hidden="false">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h3>卖家登录</h3>
+							</div>
+							<div class="modal-body">
+								<s:form action="verifySeller" enctype="multipart/form-data"
+									theme="bootstrap" cssClass="form">
+									<div class="form-group">
+										<div class="col-sm-6">
+											<s:textfield type="text" id="inputUname" placeholder="用户名"
+												name="seller.username" class="form-control" />
+										</div>
+										<div class="col-sm-6">
+											<s:password type="password" id="inputPwd" placeholder="密码"
+												name="seller.password" />
+										</div>
+									</div>
+									<s:token />
+									<div class="form-group">
+										<div class="col-sm-6">
+											<button type="submit" class="btn btn-success">登录</button>
+											<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
+										</div>
+										<div class="col-sm-6">
+											<a href="registerForSelling">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+												href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
+										</div>
+									</div>
+								</s:form>
+							</div>
+						</div>
 			</div>
+			<%
+				}
+				if(sellerName !=null && buyerName ==null){
+			%>
+			<div class="span6">
+				欢迎，掌柜的<strong> <a href="index" name="loginname"><%=sellerName%></a><a
+					href="loginout">&nbsp;/&nbsp;退出</a></strong>
+			</div>
+			<%
+				}
+			%>
+			<%
+				if(buyerName !=null && sellerName ==null){
+			%>
+			<div class="span6">
+				欢迎光临！客官<strong> <a href="index" name="loginname"><%=buyerName%></a><a
+					href="loginout">&nbsp;/&nbsp;退出</a></strong>
+			</div>
+			<%
+				}
+			%>
+		</div>
 			<!-- 导航栏 ================================================== -->
 			<div id="logoArea" class="navbar">
 				<a id="smallScreen" data-target="#topMenu" data-toggle="collapse"
@@ -70,7 +123,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a>
 				<div class="navbar-inner">
-					<a class="brand" href="index.html"><img
+					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
 					<form class="form-inline navbar-search" method="post" action="#">
 						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
@@ -87,54 +140,10 @@
 						<button type="submit" id="submitButton" class="btn btn-primary">查询</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
-						<li class=""><a href="product_sell.html">我想卖</a></li>
+						<li class=""><a href="product_sell">上架物品</a></li>
 						<li class=""><a href="normal.html">出售记录</a></li>
 						<li class=""><a href="contact.html">淘宝记录</a></li>
-						<li class=""><a href="contact.html">投诉建议</a></li>
-						<li class=""><a href="#login" role="button"
-							data-toggle="modal" style="padding-right: 0"><span
-								class="btn btn-large btn-success">登录</span></a>
-							<div id="login" class="modal hide fade in" tabindex="-1"
-								role="dialog" aria-labelledby="login" aria-hidden="false">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-									<h3>请登录</h3>
-								</div>
-								<div class="modal-body">
-									<form class="form-horizontal loginFrm">
-										<div class="control-group">
-											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
-												type="text" id="inputEmail" placeholder="用户名" name="Uname">
-											<!--用户名文本框为Uname-->
-											<a href="#">&nbsp; &nbsp; 还没有账号，需要注册？</a>
-
-										</div>
-										<div class="control-group">
-											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
-												type="password" id="inputPassword" placeholder="密码"
-												name="Pwd">
-											<!--密码文本框为Pwd-->
-											<a href="#">&nbsp; &nbsp; 忘记密码?</a>
-										</div>
-										<!--div>
-			                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			                                &nbsp; &nbsp; &nbsp; &nbsp;
-			                                <label class="checkbox">     
-												<input type="checkbox"> 记住密码
-												</label>
-                              			</div-->
-									</form>
-									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-									&nbsp; &nbsp; &nbsp; &nbsp;
-									<button type="submit" class="btn btn-success">登录</button>
-									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-									<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
-								</div>
-							</div></li>
+						<li class=""><a href="contact">投诉建议</a></li>
 					</ul>
 				</div>
 			</div>
@@ -238,15 +247,17 @@
 				and open the template in the editor.
 				-->
 				<div class="span9">
+					<!-- 
 					<ul class="breadcrumb">
-						<li><a href="index.html">我想买</a> <span class="divider">/</span></li>
+						<li><a href="index">我想买</a> <span class="divider">/</span></li>
 						<li class="active">注册</li>
 					</ul>
+					 -->
 					<!-- 嵌套框========================== -->
 					<div class="well">
 						<s:form action="addSeller" enctype="multipart/form-data"
 							theme="bootstrap" cssClass="form-horizontal"
-							label="注册为卖家">
+							label="注册新卖家">
 							<s:textfield label="用户名*" name="seller.username" cssClass="input-sm"
 								elementCssClass="col-sm-3" tooltip="Enter your Name here" />
 							<s:password label="密码*" name="seller.password"
@@ -260,6 +271,7 @@
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 									<s:submit cssClass="btn btn-xs" value="注册"/>
+									<s:reset cssClass="btn btn-xs" value="重置"/> 
 								</div>
 							</div>
 						</s:form>
