@@ -111,15 +111,11 @@
 		</div>
 			<!-- 导航栏 ================================================== -->
 			<div id="logoArea" class="navbar">
-				<a id="smallScreen" data-target="#topMenu" data-toggle="collapse"
-					class="btn btn-navbar"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a>
 				<div class="navbar-inner">
 					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
 					<form class="form-inline navbar-search" method="post"
-						action="products.jsp">
+						action="#quary_products.jsp">
 						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
 						<!-- 输入查询框 -->
 						<select class="srchTxt" name="inputselect1">

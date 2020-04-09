@@ -128,8 +128,8 @@
     <ul id="topMenu" class="nav pull-right">
  <li class=""><a href="product_sell.html">上架物品</a></li>
 	 <li class=""><a href="normal.html">出售记录</a></li>
-	 <li class=""><a href="contact.html">淘宝记录</a></li>
-          <li class=""><a href="contact.html">投诉建议</a></li>
+	 <li class=""><a href="#">淘宝记录</a></li>
+          <li class=""><a href="contact">投诉建议</a></li>
     </ul>
   </div>
 </div>

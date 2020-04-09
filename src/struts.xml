@@ -9,6 +9,10 @@
 	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
 	<!-- 所有的Action定义都应该放在package下 -->	
 	<package name="gabriel" extends="struts-default">
+		<default-action-ref name="index" />
+		<action name="index" >
+			<result name="success">WEB-INF/content/index.jsp</result>
+		</action>
 		<action name="addSeller" class="action.SellerAction" method="registerAsSeller">
 			<result>WEB-INF/content/index.jsp</result><!-- sellerIndex.jsp -->
 		</action>
@@ -51,10 +55,30 @@
 		<action name="updateBuyerInfo" class="action.BuyerAction" method="updateBuyer">
 			<result>WEB-INF/content/buyerLoginSuccess.jsp</result>
 		</action>
-		<action name="*_jpg">
-			<result>/WEB-INF/content/{1}.jpg</result>
+		
+		<!-- 直接跳转的请求 -->
+		<action name="registerForSelling">
+			<result>WEB-INF/content/registerForSelling.jsp</result></action>
+		<action name="forgetpass">
+			<result>WEB-INF/content/forgetpass.jsp</result></action>
+		<action name="loginout">
+			<result>WEB-INF/content/loginout.jsp</result></action>
+		<action name="register">
+			<result>WEB-INF/content/register.jsp</result></action>
+		<action name="product_sell">
+			<result>WEB-INF/content/product_sell.jsp</result>
 		</action>
-		<action name="*">
+		<action name="contact">
+			<result>WEB-INF/content/contact.jsp</result></action>
+		<action name="register">
+			<result>WEB-INF/content/register.jsp</result></action>
+
+
+		<!-- 通配请求 -->
+		<action name="*_jpg">
+			<result>/WEB-INF/images/{1}.jpg</result>
+		</action>
+		<action name="*_jsp">
 			<result>/WEB-INF/content/{1}.jsp</result>
 		</action>
 	</package>
