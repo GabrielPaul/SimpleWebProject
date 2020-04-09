@@ -5,12 +5,13 @@
 	<struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="100000000"/>
 	<!--临时存放文件的路径-->
 	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
 	<!-- 所有的Action定义都应该放在package下 -->	
 	<package name="gabriel" extends="struts-default">
 		<default-action-ref name="index" />
-		<action name="index" >
+		<action name="index" class="action.IndexAction" method="refreshIndex">
 			<result name="success">WEB-INF/content/index.jsp</result>
 		</action>
 		<action name="addSeller" class="action.SellerAction" method="registerAsSeller">
@@ -76,7 +77,7 @@
 
 		<!-- 通配请求 -->
 		<action name="*_jpg">
-			<result>/WEB-INF/images/{1}.jpg</result>
+			<result>WEB-INF/images/{1}.jpg</result>
 		</action>
 		<action name="*_jsp">
 			<result>/WEB-INF/content/{1}.jsp</result>
