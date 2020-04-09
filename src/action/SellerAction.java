@@ -51,7 +51,7 @@ public class SellerAction extends ActionSupport{
 	public String registerAsSeller(){
 		int result = sellerService.addSeller(seller);
 		if(result >0) {
-			ServletActionContext.getRequest().getSession().setAttribute("userName", seller.getUsername());
+			ServletActionContext.getRequest().getSession().setAttribute("sellerName", seller.getUsername());
 			return SUCCESS;
 		}
 		return ERROR;
@@ -61,9 +61,9 @@ public class SellerAction extends ActionSupport{
 			//在session中设置用户名
 			ServletActionContext.getRequest().getSession().setAttribute("sellerName", seller.getUsername());
 			//在session中设置seller phone
-			long phone = sellerService.findSeller(seller).get(0).getPhoneNum();
-			ServletActionContext.getRequest().getSession().setAttribute("sellerPhone", phone);
-			System.out.println("seller's phone is :" + phone);
+			//long phone = sellerService.findSeller(seller).get(0).getPhoneNum();
+			//ServletActionContext.getRequest().getSession().setAttribute("sellerPhone", phone);
+			//System.out.println("seller's phone is :" + phone);
 			return SUCCESS;
 		}
 		return ERROR;

@@ -12,7 +12,8 @@
         <title>退出登录</title>
     </head>
     <body>
-       <% session.removeAttribute( "userName");
+       <% session.removeAttribute( "buyerName");
+       	  session.removeAttribute( "sellerName");
         response.sendRedirect("index");%>
     </body>
 </html>

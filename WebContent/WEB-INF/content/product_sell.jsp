@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
+<%@ page pageEncoding="utf-8" language="java" errorPage=""%>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -194,6 +197,25 @@
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade active in" id="home">
 			  <h4>商品详细信息</h4>
+			  <s:form action="#" enctype="multipart/form-data" method="post">
+					<s:textfield type="text" id="goodsName" label="商品名称"
+						name="goods.goodsName" class="form-control" />
+			        <s:select name="category" label="商品类型"
+         				list="{'书籍','衣物','鞋子','裤子','运动相关','生活用品','数码产品','其他'}" />
+					<s:select name="degreeOld" label="几成新"
+							list="{10,9,8,7,6,5,4,3,2,1}" />
+					<s:select name="onSellTime" label="上架几个月"
+							list="{1,2,3}" />
+					<s:textfield type="text" id="goodsName" label="售价（元）"
+						name="goods.price" class="form-control" />
+					<s:textarea type="text" id="description" label="详细描述"
+						name="goods.description" class="form-control" />
+					<s:token />
+			  		<s:submit value="确认上架"/>
+			  	
+			   </s:form>
+			  
+			  <!--
                 <table class="table table-bordered">
 				<tbody>		
 				<tr class="techSpecRow"><td style="text-align:center" class="techSpecTD1">商品名称：</td><td style="text-align:center" class="techSpecTD2">  <input type="text" id="inputEmail"  name="Pname"></td></tr>
@@ -287,7 +309,7 @@
                 </tr>
 				</tbody>
 				</table>
-				
+				-->
 				
               </div>
 		
@@ -399,7 +421,7 @@
         function checkPic() {
             var picPath = document.getElementById("picPath").value;
             var type = picPath.substring(picPath.lastIndexOf(".") + 1, picPath.length).toLowerCase();
-            if (type != ="jpg" && type !== "bmp" && type !== "gif" && type !== "png") {
+            if (type !=="jpg" && type !== "bmp" && type !== "gif" && type !== "png") {
                 alert("请上传正确的图片格式");
                 return false;
             }

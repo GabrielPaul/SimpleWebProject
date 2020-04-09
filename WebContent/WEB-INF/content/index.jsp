@@ -7,7 +7,8 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ page pageEncoding="utf-8" language="java" errorPage=""%>
 <%
-	String inputUname = (String) session.getAttribute("userName");
+	String buyerName = (String) session.getAttribute("buyerName");
+	String sellerName = (String) session.getAttribute("sellerName");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,7 @@
 			<div id="welcomeLine" class="row">
 
 				<%
-					if (inputUname == null) {
+					if (buyerName == null && sellerName == null) {
 				%>
 				<div class="span6">
 					卖家登陆请点击<strong> <a href="#sellerLogin" role="button"
@@ -60,25 +61,26 @@
 									<h3>卖家登录</h3>
 								</div>
 								<div class="modal-body">
-									<s:form action="verifyBuyer" enctype="multipart/form-data"
+									<s:form action="verifySeller" enctype="multipart/form-data"
 										theme="bootstrap" cssClass="form">
 										<div class="form-group">
 											<div class="col-sm-6">
 												<s:textfield type="text" id="inputUname" placeholder="用户名"
-													name="buyer.username" class="form-control" />
+													name="seller.username" class="form-control" />
 											</div>
 											<div class="col-sm-6">
 												<s:password type="password" id="inputPwd" placeholder="密码"
-													name="buyer.password" />
+													name="seller.password" />
 											</div>
 										</div>
+										<s:token />
 										<div class="form-group">
 											<div class="col-sm-6">
 												<button type="submit" class="btn btn-success">登录</button>
 												<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
 											</div>
 											<div class="col-sm-6">
-												<a href="register">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+												<a href="registerForSelling">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
 													href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
 											</div>
 										</div>
@@ -87,11 +89,21 @@
 							</div>
 				</div>
 				<%
-					} else {
+					}
+					if(sellerName !=null && buyerName ==null){
 				%>
-
 				<div class="span6">
-					欢迎光临！<strong> <a href="index" name="loginname"><%=inputUname%></a><a
+					欢迎，掌柜的<strong> <a href="index" name="loginname"><%=sellerName%></a><a
+						href="loginout">&nbsp;/&nbsp;退出</a></strong>
+				</div>
+				<%
+					}
+				%>
+				<%
+					if(buyerName !=null && sellerName ==null){
+				%>
+				<div class="span6">
+					欢迎光临！客官<strong> <a href="index" name="loginname"><%=buyerName%></a><a
 						href="loginout">&nbsp;/&nbsp;退出</a></strong>
 				</div>
 				<%
@@ -105,7 +117,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a>
 				<div class="navbar-inner">
-					<a class="brand" href="themes/bootshop/bootstrap.min.css"><img
+					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
 					<form class="form-inline navbar-search" method="post"
 						action="products.jsp">
@@ -128,7 +140,7 @@
 						<li><a href="#">浏览记录</a></li>
 						<li><a href="contact">建议</a></li>
 						<%
-							if (inputUname == null) {
+							if (buyerName == null &&sellerName== null) {
 						%>
 						<li><a href="#login" role="button" data-toggle="modal"
 							style="padding-right: 0"> <span
@@ -154,6 +166,7 @@
 													name="buyer.password" />
 											</div>
 										</div>
+										<s:token />
 										<div class="form-group">
 											<div class="col-sm-6">
 												<button type="submit" class="btn btn-success">登录</button>
