@@ -261,13 +261,18 @@
 	  -->
 	  
 <div id="myTab" class="pull-right">
- <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
- <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation">
+			<a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+		</li>
+		<li role="presentation" class="active">
+			<a href="#blockView" data-toggle="tab"><span class="btn btn-large"><i class="icon-th-large"></i></span></a>
+		</li>
+	</ul>
 </div>
 
 <br class="clr"/>
 <div class="tab-content">
-<br class="clr"/>
 	<div class="tab-pane  active" id="blockView">
 		<ul class="thumbnails">
 		<s:iterator value="allGoodsPagesOnSale"  status='st' id="g">
@@ -318,11 +323,13 @@
 				</div>
 				<div class="span3 alignR">
 				<form class="form-horizontal qtyFrm">
-				<h3> ?222</h3>
+				<h4> <s:property value="%{formatDouble(#g.price)}"/></h4>
 				<br/>
 				
-				  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-				  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+				  <a href="product_details.html" class="btn btn-large "> 添加 <i class=" icon-shopping-cart"></i></a>
+				  <a class="btn btn-large" href="product_details?detailsGoodsPic=<s:property value="#g.pictures[0].replace('.','_')"/>">
+				  	<i class="icon-zoom-in"></i>
+				  </a>
 				
 					</form>
 				</div>
@@ -332,18 +339,33 @@
 	</div>
 </div>
 
-	
+	<!-- 页码显示 -->
+	<s:property value="totalEntry/6 +1"/>--totalEntry
+	<s:property value="pageNow"/>--pageNow-- <s:property value='pageNow =="1"'/>
 	<div class="pagination">
+			<s:if test="totalEntry/6 ==0">
 			<ul>
-			<li><a href="#">&lsaquo;</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">...</a></li>
-			<li><a href="#">&rsaquo;</a></li>
+				<li class="disabled"><a href="#" >1</a></li>
 			</ul>
-			</div>
+			</s:if>
+			<s:else>
+				<ul>
+				<s:if test='pageNow !="1"'>
+				<li><a href="#">&lsaquo;</a></li>
+				</s:if>
+				<s:iterator value="new int[totalEntry/6]"  status='st' id="g">
+					<li><a href="#"><s:property value="#st.index+1"/></a></li>
+					<s:if test="#st.last ==true">
+						<s:if test="totalEntry%6 >0">
+							<li><a href="#"><s:property value="#st.index+2"/></a></li>
+						</s:if>
+					</s:if>
+				</s:iterator>
+				<li><a href="#">...</a></li>
+				<li><a href="#">&rsaquo;</a></li>
+				</ul>
+			</s:else>
+	</div>
 			<br class="clr"/>
 </div>
 </div>
@@ -444,6 +466,10 @@
 	</div>
 </div>
 <span id="themesBtn"></span>
+
+<script>
+function 
+</script>
 
 </body>
 </html>
