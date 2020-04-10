@@ -56,7 +56,7 @@ public class SellerServiceImp implements SellerService{
 	public List<Goods> viewOnselling(String sellerName) {
 		// TODO Auto-generated method stub
 		Seller seller = sellerDao.findByName(sellerName).get(0);
-		return goodsDao.fingOnsellingGoods(seller);
+		return goodsDao.fingGoods(seller,true);
 	}
 
 	@Override

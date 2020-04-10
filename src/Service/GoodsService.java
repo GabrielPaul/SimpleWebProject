@@ -19,5 +19,9 @@ public interface GoodsService{
 
 	List<String> getPicName(List<File> images, List<String> imagesContextType,
 			List<String> imagesFileName,Seller seller);
+
+	List<Goods> getCarouselGoods();
+	
+	List<Goods> fingGoodsBySeller(Seller seller,boolean state);
 	
 }

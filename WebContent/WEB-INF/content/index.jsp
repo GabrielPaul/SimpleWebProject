@@ -186,60 +186,37 @@
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">
 			<!-- 轮播（Carousel）项目 -->
-			
-			
-			<div class="carousel-inner">
-				<div class="item active" >
-					<div class="container">
-						<a href="product_details.jsp">
-							<img style="width: 100%"  src="themes/images/carousel/2.jpg"  alt="special offers"/>
-						</a>
-						<!-- 标题 -->
-						<div class="carousel-caption">标题 1</div>
-					</div>
-				</div>
-				<s:iterator value="carouel">
-				<div class="item" >
-					<div class="container">
-						<a href="product_details.jsp">
-							<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
-						</a>
-						<!-- 标题 -->
-						<div class="carousel-caption">标题 1</div>
-					</div>
-				</div>
-				
-				</s:iterator>
-				<!-- 
-				<div class="item">
-					<div class="container">
-						<a href="product_details.jsp"> <img style="width: 100%"
-							src="themes/images/carousel/2.jpg" alt="" />
-						</a>
-					</div>
-					<div class="carousel-caption">
-						<h4>滚动栏l</h4>
-						<p>介绍</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="container">
-						<a href="product_details.jsp"> <img
-							src="themes/images/carousel/3.jpg" alt="" />
-						</a>
-						<div class="carousel-caption">
-							<h4>滚动栏l</h4>
-							<p>介绍</p>
+				<s:iterator value="carouel"  status='st'>
+				  <s:if test="#st.count==1"> 
+					<div class="item active" >
+						<div class="container">			  
+							<a href="product_details.jsp">
+								<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
+							</a>
+							<!-- 标题 -->
+							<div class="carousel-caption">标题 1</div>
 						</div>
 					</div>
-				</div>
-				 -->
+				  </s:if>
+				  <s:if test="#st.count>1"> 
+					<div class="item" >
+						<div class="container">			  
+							<a href="product_details.jsp">
+								<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
+							</a>
+							<!-- 标题 -->
+							<div class="carousel-caption">标题 1</div>
+						</div>
+					</div>
+				  </s:if>				  
+				</s:iterator>
+			
 			</div>
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 			<a class="right carousel-control" href="#myCarousel"
 				data-slide="next">&rsaquo;</a>
 		</div>
-	</div>
+		<!-- 轮播（Carousel） End====================================================================== -->
 
 	<div id="mainBody">
 		<div class="container">

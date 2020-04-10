@@ -100,4 +100,27 @@ public class GoodsServiceImp implements GoodsService{
 		int pos=fileName.indexOf(".");
 		return fileName.substring(pos);
 	}
+
+	@Override
+	public List<Goods> getCarouselGoods() {
+		// TODO Auto-generated method stub
+		//return goodsDao.getAllOnsellingGoods();
+		List<Goods> ret = new ArrayList<Goods>();
+		List<Seller> sellers = new ArrayList<Seller>();
+		sellers = sellerDao.findByName("gabriel");
+		for(int i=0;i<sellers.size();i++) {
+			List<Goods> tempGoods = new ArrayList<Goods>();
+			tempGoods = goodsDao.fingGoods(sellers.get(i), true);
+			for(int j=0;j<tempGoods.size();j++) {
+				ret.add(tempGoods.get(j));
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public List<Goods> fingGoodsBySeller(Seller seller, boolean state) {
+		// TODO Auto-generated method stub
+		return goodsDao.fingGoods(seller, state);
+	}
 }

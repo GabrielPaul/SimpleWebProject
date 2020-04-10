@@ -9,10 +9,10 @@ import Dao.GoodsDao;
 public class GoodsDaoHibernate4 extends BaseDaoHibernate4<Goods> implements GoodsDao{
 
 	@Override
-	public List<Goods> fingOnsellingGoods(Seller seller) {
+	public List<Goods> fingGoods(Seller seller,boolean state) {
 		// TODO Auto-generated method stub
 		return find("select p from Goods p where p.ownerSeller = ?0"
-				+" and p.state = ?1",seller,true);
+				+" and p.state = ?1",seller,state);
 	}
 
 	@Override

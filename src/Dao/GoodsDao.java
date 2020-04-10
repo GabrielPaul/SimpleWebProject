@@ -8,9 +8,9 @@ import domain.Seller;
 
 public interface GoodsDao extends BaseDao<Goods>{
 	/*
-	 * 返回卖家所有正在出售的物品
+	 * 返回卖家所有的物品
 	 */
-	List<Goods> fingOnsellingGoods(Seller seller);
+	List<Goods> fingGoods(Seller seller,boolean state);
 
 	/*
 	 * 下架物品

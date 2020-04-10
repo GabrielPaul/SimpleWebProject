@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="Goods_info")
 public class Goods {
@@ -31,6 +34,7 @@ public class Goods {
 	@Column(name="picture_address")
 	//映射集合元素索引的列
 	@OrderColumn(name="list_order")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<String> pictures=new ArrayList<>();
 	private String description;
 	// false for undercarriage
