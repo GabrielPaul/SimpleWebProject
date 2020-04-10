@@ -98,7 +98,6 @@ public class GoodsAction extends ActionSupport{
 		for(int i=0;i<changedPicPath.size();i++)	System.out.println(changedPicPath.get(i));
 		goods.setPictures(changedPicPath);
 		goods.setCategory(getCategory(category));
-		System.out.println(goods.getGoodsName());
 		goodsService.addGoods(goods);
 		return SUCCESS;
 	}
