@@ -1,22 +1,18 @@
-?<!DOCTYPE html>
-<%@ page pageEncoding="GBK" language="java" import="java.sql.*" errorPage="" %>
- <% String inputUname=(String)session.getAttribute("inputUname"); %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
+<%@ page pageEncoding="utf-8" language="java" errorPage=""%>
+<%
+	String buyerName = (String) session.getAttribute("buyerName");
+	String sellerName = (String) session.getAttribute("sellerName");
+%>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>¾ÉÎïÐÂÓÃ</title>
+    <title>å’¸é±¼æ‚è´§</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-<!--Less styles --> 
-   <!-- Other Less css file //different less files has different color scheam
-	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-	<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-	<script src="themes/js/less.js" type="text/javascript"></script> -->
-	
+    <meta name="author" content="">	
 <!-- Bootstrap style --> 
     <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
@@ -34,98 +30,148 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-    <!-- ×î¶¥²ã================================================== -->
+    <!-- æœ€é¡¶å±‚================================================== -->
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	 <% if(inputUname.equals("")){ %>
-	<div class="span6">»¶Ó­¹âÁÙ£¡ÇëÄú<strong> <a href="login.jsp" name="loginname" >µÇÂ¼</a></strong></div>
-        <% }else { %>
-        <div class="span6">»¶Ó­¹âÁÙ£¡ÇëÄú<strong> <a href="Umessage.jsp" name="loginname" ><%=inputUname%>  </a></strong></div>
-        <% } %>
-	<div class="span6">
-	<div class="pull-right">
-		<!--a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a-->
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> ÎÒµÄ¹ºÎï³µ </span> </a> 
-	</div>
-	</div>
-</div>
-<!-- µ¼º½À¸ ================================================== -->
+
+			<%
+				if (buyerName == null && sellerName == null) {
+			%>
+			<div class="span6">
+				å–å®¶ç™»é™†è¯·ç‚¹å‡»<strong> <a href="#sellerLogin" role="button"
+					data-toggle="modal" style="padding-right: 0"> <span
+						class="btn btn-link">è¿™é‡Œ</span>
+				</a></strong>
+				<div id="sellerLogin" class="modal hide fade in" tabindex="-1"
+							role="dialog" aria-labelledby="login" aria-hidden="false">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">Ã—</button>
+								<h3>å–å®¶ç™»å½•</h3>
+							</div>
+							<div class="modal-body">
+								<s:form action="verifySeller" enctype="multipart/form-data"
+									theme="bootstrap" cssClass="form">
+									<div class="form-group">
+										<div class="col-sm-6">
+											<s:textfield type="text" id="inputUname" placeholder="ç”¨æˆ·å"
+												name="seller.username" class="form-control" />
+										</div>
+										<div class="col-sm-6">
+											<s:password type="password" id="inputPwd" placeholder="å¯†ç "
+												name="seller.password" />
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<button type="submit" class="btn btn-success">ç™»å½•</button>
+											<button class="btn" data-dismiss="modal" aria-hidden="true">é€€å‡º</button>
+										</div>
+										<div class="col-sm-6">
+											<a href="registerForSelling">&nbsp; &nbsp; è¿˜æ²¡æœ‰è´¦å·ï¼Œéœ€è¦æ³¨å†Œï¼Ÿ</a> <a
+												href="forgetpass">&nbsp; &nbsp; å¿˜è®°å¯†ç ?</a>
+										</div>
+									</div>
+								</s:form>
+							</div>
+						</div>
+			</div>
+			<%
+				}
+				if(sellerName !=null && buyerName ==null){
+			%>
+			<div class="span6">
+				æ¬¢è¿Žï¼ŒæŽŒæŸœçš„<strong> <a href="index" name="loginname"><%=sellerName%></a><a
+					href="loginout">&nbsp;/&nbsp;é€€å‡º</a></strong>
+			</div>
+			<%
+				}
+			%>
+			<%
+				if(buyerName !=null && sellerName ==null){
+			%>
+			<div class="span6">
+				æ¬¢è¿Žå…‰ä¸´ï¼å®¢å®˜<strong> <a href="index" name="loginname"><%=buyerName%></a><a
+					href="loginout">&nbsp;/&nbsp;é€€å‡º</a></strong>
+			</div>
+			<%
+				}
+			%>
+		</div>
+		
+<!-- å¯¼èˆªæ  ================================================== -->
+
 <div id="logoArea" class="navbar">
-<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-</a>
-  <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="themes/images/logo1.png" alt="¾ÉÎïÐÂÓÃ"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" name="inputselect"/> <!-- ÊäÈë²éÑ¯¿ò -->
-		  <select class="srchTxt" name="inputselect1"><!-- ÎïÆ··ÖÀàÑ¡Ôñ¿ò -->
-			<option>È«²¿</option>
-			<option>Êé¼® </option>
-			<option>ÊÖ»ú</option>
-			<option>µçÄÔ </option>
-			<option>ÒÂÎï</option>
-			<option>Éú»îÓÃÆ·</option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">²éÑ¯</button>
-    </form>
-    <ul id="topMenu" class="nav pull-right">
- <li class=""><a href="product_sell.html">ÎÒÏëÂô</a></li>
-	 <li class=""><a href="normal.html">³öÊÛ¼ÇÂ¼</a></li>
-	 <li class=""><a href="contact.html">ÌÔ±¦¼ÇÂ¼</a></li>
-          <li class=""><a href="contact.html">Í¶Ëß½¨Òé</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">µÇÂ¼</span></a>
-         <div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>
-			<h3>ÇëµÇÂ¼</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                               
-                                <input type="text" id="inputEmail" placeholder="ÓÃ»§Ãû" name="Uname"><!--ÓÃ»§ÃûÎÄ±¾¿òÎªUname-->
-                                <a href="#">&nbsp; &nbsp; »¹Ã»ÓÐÕËºÅ£¬ÐèÒª×¢²á£¿</a>
-                                
-			  </div>
-			  <div class="control-group">
-                              	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                
-				<input type="password" id="inputPassword" placeholder="ÃÜÂë" name="Pwd"><!--ÃÜÂëÎÄ±¾¿òÎªPwd-->
-                                <a href="#">&nbsp; &nbsp; Íü¼ÇÃÜÂë?</a>
-                          </div>
-                               <!--div>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp;
-                                <label class="checkbox">     
-				<input type="checkbox"> ¼Ç×¡ÃÜÂë
-				</label>
-                              
-			  </div-->
-			</form>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			<button type="submit" class="btn btn-success">µÇÂ¼</button>
-                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			<button class="btn" data-dismiss="modal" aria-hidden="true">ÍË³ö</button>
-		  </div>
-	</div>
-	</li>
-    </ul>
-  </div>
-</div>
+				<div class="navbar-inner">
+					<a class="brand" href="index"><img
+						src="themes/images/logo1.png" alt="æ—§ç‰©æ–°ç”¨" /></a>
+					<form class="form-inline navbar-search" method="post"
+						action="#quary_products.jsp">
+						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
+						<!-- è¾“å…¥æŸ¥è¯¢æ¡† -->
+						<select class="srchTxt" name="inputselect1">
+							<!-- ç‰©å“åˆ†ç±»é€‰æ‹©æ¡† -->
+							<option>å…¨éƒ¨</option>
+							<option>ä¹¦ç±</option>
+							<option>æ‰‹æœº</option>
+							<option>ç”µè„‘</option>
+							<option>è¡£ç‰©</option>
+							<option>ç”Ÿæ´»ç”¨å“</option>
+						</select>
+						<button type="submit" id="submitButton" class="btn btn-primary">æŸ¥è¯¢</button>
+					</form>
+					<ul id="topMenu" class="nav pull-right">
+						<li><a href="registerForSelling">æˆä¸ºå–å®¶</a></li>
+						<li><a href="product_sell">ä¸Šæž¶ç‰©å“</a></li>
+						<li><a href="#">æµè§ˆè®°å½•</a></li>
+						<li><a href="contact">å»ºè®®</a></li>
+						<%
+							if (buyerName == null &&sellerName== null) {
+						%>
+						<li><a href="#login" role="button" data-toggle="modal"
+							style="padding-right: 0"> <span
+								class="btn btn-large btn-success">ç™»å½•</span>
+						</a>
+							<div id="login" class="modal hide fade in" tabindex="-1"
+								role="dialog" aria-labelledby="login" aria-hidden="false">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">Ã—</button>
+									<h3>è¯·ç™»å½•</h3>
+								</div>
+								<div class="modal-body">
+									<s:form action="verifyBuyer" enctype="multipart/form-data"
+										theme="bootstrap" cssClass="form">
+										<div class="form-group">
+											<div class="col-sm-6">
+												<s:textfield type="text" id="inputUname" placeholder="ç”¨æˆ·å"
+													name="buyer.username" class="form-control" />
+											</div>
+											<div class="col-sm-6">
+												<s:password type="password" id="inputPwd" placeholder="å¯†ç "
+													name="buyer.password" />
+											</div>
+										</div>
+										<!--<s:token /> -->
+										<div class="form-group">
+											<div class="col-sm-6">
+												<button type="submit" class="btn btn-success">ç™»å½•</button>
+												<button class="btn" data-dismiss="modal" aria-hidden="true">é€€å‡º</button>
+											</div>
+											<div class="col-sm-6">
+												<a href="register">&nbsp; &nbsp; è¿˜æ²¡æœ‰è´¦å·ï¼Œéœ€è¦æ³¨å†Œï¼Ÿ</a> <a
+													href="forgetpass">&nbsp; &nbsp; å¿˜è®°å¯†ç ?</a>
+											</div>
+										</div>
+									</s:form>
+								</div>
+							</div>
+						</li>
+						<%} %>
+					</ul>
+				</div>
+			</div>
 </div>
 </div>
 <!-- Header End====================================================================== -->
@@ -137,84 +183,83 @@
 	<div id="sidebar" class="span3">
 		<!--div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div-->
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-                     <li><a href="products.html">È«²¿ÉÌÆ·</a></li>
-			<li class="subMenu open"><a> µç×Ó²úÆ·</a>
+                     <li><a href="products.html">å…¨éƒ¨å•†å“</a></li>
+			<li class="subMenu open"><a> ç”µå­äº§å“</a>
 				<ul>
-				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>ÊÖ»ú</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>µçÄÔ</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>ÊýÂëÏà»ú</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>ÆäËû</a></li>
+				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>æ‰‹æœº</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>ç”µè„‘</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>æ•°ç ç›¸æœº</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>å…¶ä»–</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a> ÒÂÎï</a>
+			<li class="subMenu"><a> è¡£ç‰©</a>
 			<ul style="display:none">
-				<li><a href="products.html"><i class="icon-chevron-right"></i>ÒÂ·þ</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>¿ã×Ó</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Ð¬×Ó</a></li>	
+				<li><a href="products.html"><i class="icon-chevron-right"></i>è¡£æœ</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>è£¤å­</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>éž‹å­</a></li>	
 															
 			</ul>
 			</li>
-			<li class="subMenu"><a>Êé¼®</a>
+			<li class="subMenu"><a>ä¹¦ç±</a>
 				<ul style="display:none">
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Ð¡Ëµ</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>É¢ÎÄ</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>ËÄÁù¼¶Êé¼®</a></li>	
-				<li><a href="products.html"><i class="icon-chevron-right"></i>¿¼ÑÐ</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>ÑÅË¼ÍÐ¸£</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>×¨ÒµÊé¼®</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>å°è¯´</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>æ•£æ–‡</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>å››å…­çº§ä¹¦ç±</a></li>	
+				<li><a href="products.html"><i class="icon-chevron-right"></i>è€ƒç ”</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>é›…æ€æ‰˜ç¦</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>ä¸“ä¸šä¹¦ç±</a></li>												
 														
 			</ul>
 			</li>
-			<li><a href="products.html">Éú»îÓÃÆ·</a></li>
+			<li><a href="products.html">ç”Ÿæ´»ç”¨å“</a></li>
 			
 		</ul>
 		<br/>
 		  <div class="thumbnail">
                       <a href="products.html">
-			<img src="themes/images/products/panasonic.jpg" alt="ÊýÂëÏà»ú" /></a>
+			<img src="themes/images/products/panasonic.jpg" alt="æ•°ç ç›¸æœº" /></a>
 			<div class="caption">
-			  <h5>ÊýÂëÏà»ú</h5>
-				<h4 style="text-align:center"><a class="btn" href="#">Ìí¼ÓÉÌÆ·<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
+			  <h5>æ•°ç ç›¸æœº</h5>
+				<h4 style="text-align:center"><a class="btn" href="#">æ·»åŠ å•†å“<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
 			</div>
 		  </div><br/>
 			<div class="thumbnail">
                              <a href="products.html"> 
 				<img src="themes/images/products/46.jpg" title="Bootshop New Kindel" alt="Bootshop Kindel"></a>
 				<div class="caption">
-				  <h5>ËÄÁù¼¶´Ê»ã¾«½²</h5>
-				    <h4 style="text-align:center"><!--a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a--> <a class="btn" href="#">Ìí¼ÓÉÌÆ· <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
+				  <h5>å››å…­çº§è¯æ±‡ç²¾è®²</h5>
+				    <h4 style="text-align:center"><!--a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a--> <a class="btn" href="#">æ·»åŠ å•†å“ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
 				</div>
 			  </div><br/>
 			<div class="thumbnail">
                              <a href="products.html"> 
 				<img src="themes/images/products/13.jpg" title="Bootshop New Kindel" alt="Bootshop Kindel"></a>
 				<div class="caption">
-				  <h5>¾«Æ·ÊÖ±í</h5>
-				    <h4 style="text-align:center"><!--a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a--> <a class="btn" href="#">Ìí¼ÓÉÌÆ· <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
+				  <h5>ç²¾å“æ‰‹è¡¨</h5>
+				    <h4 style="text-align:center"><!--a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a--> <a class="btn" href="#">æ·»åŠ å•†å“ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222.00</a></h4>
 				</div>
 			  </div><br/>
 	</div>
 <!-- Sidebar end=============================================== -->
+
 	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index.html">¾ÉÎïÐÂÓÃ</a> <span class="divider">/</span></li>
-		<li class="active">È«²¿ÉÌÆ·</li>
-    </ul>
-	<h3>È«²¿ÉÌÆ· <small class="pull-right"> ¹²ÓÐ100¼þÉÌÆ·</small></h3>	
+	<h3>å…¨éƒ¨å•†å“ <small class="pull-right"> å…±æœ‰100ä»¶å•†å“</small></h3>	
 	
 	<hr class="soft"/>
+	<!--  
 	<form class="form-horizontal span6">
 		<div class="control-group">
-		  <label class="control-label alignL">ÅÅÁÐ·½Ê½ </label>
+		  <label class="control-label alignL">æŽ’åˆ—æ–¹å¼ </label>
 			<select>
-              <option>°´Ãû³ÆÅÅË³Ðò</option>
-              <option>°´Ãû³ÆÅÅµ¹Ðò</option>
-              <option>ÉÏ¼ÜÊ±¼ä</option>
-              <option>¼Û¸ñ´Ó¸ßµ½µÍ</option>
-               <option>¼Û¸ñ´ÓµÍµ½¸ß</option>
+              <option>æŒ‰åç§°æŽ’é¡ºåº</option>
+              <option>æŒ‰åç§°æŽ’å€’åº</option>
+              <option>ä¸Šæž¶æ—¶é—´</option>
+              <option>ä»·æ ¼ä»Žé«˜åˆ°ä½Ž</option>
+               <option>ä»·æ ¼ä»Žä½Žåˆ°é«˜</option>
             </select>
 		</div>
 	  </form>
+	  -->
 	  
 <div id="myTab" class="pull-right">
  <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
@@ -228,12 +273,12 @@
 				<img src="themes/images/products/9.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -241,7 +286,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 			
 				</form>
@@ -253,12 +298,12 @@
 				<img src="themes/images/products/10.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -266,7 +311,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 			</form>
 			</div>
@@ -277,12 +322,12 @@
 				<img src="themes/images/products/11.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -290,7 +335,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				
 			</form>
@@ -302,12 +347,12 @@
 				<img src="themes/images/products/12.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -315,7 +360,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				</form>
 			</div>
@@ -327,12 +372,12 @@
 				<img src="themes/images/products/13.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -340,7 +385,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				</form>
 			</div>
@@ -351,12 +396,12 @@
 				<img src="themes/images/products/46.jpg" alt=""/>
 			</div>
 			<div class="span4">
-				<h3>²úÆ·Ãû³Æ</h3>				
+				<h3>äº§å“åç§°</h3>				
 				<hr class="soft"/>		
 				<p>
-				²úÆ·½éÉÜ
+				äº§å“ä»‹ç»
 				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">¸ü¶àÃèÊö</a>
+				<a class="btn btn-small pull-right" href="product_details.html">æ›´å¤šæè¿°</a>
 				<br class="clr"/>
 			</div>
 			<div class="span3 alignR">
@@ -364,7 +409,7 @@
 			<h3> ?222</h3>
 			<br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Ìí¼Ó <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary"> æ·»åŠ  <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				</form>
 			</div>
@@ -378,11 +423,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/b1.jpg" alt=""/></a>
 				<div class="caption">
-				  <h5>²úÆ·Ãû³Æ</h5>
+				  <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -390,11 +435,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/b2.jpg" alt=""/></a>
 				<div class="caption">
-				   <h5>²úÆ·Ãû³Æ</h5>
+				   <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -402,11 +447,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/b3.jpg" alt=""/></a>
 				<div class="caption">
-				  <h5>²úÆ·Ãû³Æ</h5>
+				  <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -414,11 +459,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/3.jpg" alt=""/></a>
 				<div class="caption">
-				  <h5>²úÆ·Ãû³Æ</h5>
+				  <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -426,11 +471,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/1.jpg" alt=""/></a>
 				<div class="caption">
-				  <h5>²úÆ·Ãû³Æ</h5>
+				  <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -438,11 +483,11 @@
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="themes/images/products/2.jpg" alt=""/></a>
 				<div class="caption">
-				  <h5>²úÆ·Ãû³Æ</h5>
+				  <h5>äº§å“åç§°</h5>
 				  <p> 
-					Âô¼ÒµØÖ·
+					å–å®¶åœ°å€
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Ìí¼Ó<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">æ·»åŠ <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -469,39 +514,35 @@
 </div>
 </div>
 
-    </div>
-  </div>
-</div>
-
 <!-- Footer ================================================================== -->
 	<div  id="footerSection">
 	<div class="container">
 		<div class="row">
 			<div class="span3">
-				<h5>¸öÈËÕË»§</h5>
-				<a href="Umessage.html">ÄúµÄÐÅÏ¢</a>
-				<a href="login.html">¹ºÂò¼ÇÂ¼</a> 
+				<h5>ä¸ªäººè´¦æˆ·</h5>
+				<a href="Umessage.html">æ‚¨çš„ä¿¡æ¯</a>
+				<a href="login.html">è´­ä¹°è®°å½•</a> 
 				
 			 </div>
 			<div class="span3">
-				<h5>×ÛºÏÐÅÏ¢</h5>
-                                <a href="contact.html">ÁªÏµÎÒÃÇ</a>	
-				<a href="faq.html">³£¼ûÎÊÌâ</a>
+				<h5>ç»¼åˆä¿¡æ¯</h5>
+                                <a href="contact.html">è”ç³»æˆ‘ä»¬</a>	
+				<a href="faq.html">å¸¸è§é—®é¢˜</a>
 			 </div>
 			<div class="span3">
-				<h5>ÉÌÆ·ÐÅÏ¢</h5>
-				<a href="index.html">×îÐÂÉÏ¼Ü</a> 
-				<a href="index.html">³©ÏúÉÌÆ·</a>  
-				<a href="index.html">ÌØ¼ÛÉÌÆ·</a>  				
+				<h5>å•†å“ä¿¡æ¯</h5>
+				<a href="index.html">æœ€æ–°ä¸Šæž¶</a> 
+				<a href="index.html">ç•…é”€å•†å“</a>  
+				<a href="index.html">ç‰¹ä»·å•†å“</a>  				
 			 </div>
 			<div id="socialMedia" class="span3 pull-right">
-				<h5>ºÏ×÷·½</h5>
-				<a href="http://ai.taobao.com"><img width="60" height="60" src="themes/images/taobao.jpg" title="ÌÔ±¦" alt="ÌÔ±¦"/></a>
-				<a href="https://www.jd.com/"><img width="60" height="60" src="themes/images/jingdong.png" title="¾©¶«" alt="¾©¶«"/></a>
-				<a href="http://www.suning.com/"><img width="60" height="60" src="themes/images/suning.png" title="ËÕÄþÒ×¹º" alt="ËÕÄþÒ×¹º"/></a>
+				<h5>åˆä½œæ–¹</h5>
+				<a href="http://ai.taobao.com"><img width="60" height="60" src="themes/images/taobao.jpg" title="æ·˜å®" alt="æ·˜å®"/></a>
+				<a href="https://www.jd.com/"><img width="60" height="60" src="themes/images/jingdong.png" title="äº¬ä¸œ" alt="äº¬ä¸œ"/></a>
+				<a href="http://www.suning.com/"><img width="60" height="60" src="themes/images/suning.png" title="è‹å®æ˜“è´­" alt="è‹å®æ˜“è´­"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; ¾ÉÎïÐÂÓÃ</p>
+		<p class="pull-right">&copy; æ—§ç‰©æ–°ç”¨</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
@@ -517,13 +558,13 @@
 <link rel="stylesheet" href="themes/switch/themeswitch.css" type="text/css" media="screen" />
 <script src="themes/switch/theamswitcher.js" type="text/javascript" charset="utf-8"></script>
 	<div id="themeContainer">
-	<div id="hideme" class="themeTitle">ÑùÊ½Ñ¡Ôñ</div>
-	<div class="themeName">Ô­Ê¼Æ¤·ô</div>
+	<div id="hideme" class="themeTitle">æ ·å¼é€‰æ‹©</div>
+	<div class="themeName">åŽŸå§‹çš®è‚¤</div>
 	<div class="images style">
 	<a href="themes/css/#" name="bootshop"><img src="themes/switch/images/clr/bootshop.png" alt="bootstrap business templates" class="active"></a>
 	<a href="themes/css/#" name="businessltd"><img src="themes/switch/images/clr/businessltd.png" alt="bootstrap business templates" class="active"></a>
 	</div>
-	<div class="themeName">±³¾°ÑùÊ½ (11)</div>
+	<div class="themeName">èƒŒæ™¯æ ·å¼ (11)</div>
 	<div class="images style">
 		<a href="themes/css/#" name="amelia" title="Amelia"><img src="themes/switch/images/clr/amelia.png" alt="bootstrap business templates"></a>
 		<a href="themes/css/#" name="spruce" title="Spruce"><img src="themes/switch/images/clr/spruce.png" alt="bootstrap business templates" ></a>
@@ -538,7 +579,7 @@
 		<a href="themes/css/#" name="united"><img src="themes/switch/images/clr/united.png" alt="bootstrap business templates"></a>
 		<p style="margin:0;line-height:normal;margin-left:-10px;display:none;"><small>These are just examples and you can build your own color scheme in the backend.</small></p>
 	</div>
-	<div class="themeName">±³¾°ÑÕÉ«£¨20£©</div>
+	<div class="themeName">èƒŒæ™¯é¢œè‰²ï¼ˆ20ï¼‰</div>
 	<div class="images patterns">
 		<a href="themes/css/#" name="pattern1"><img src="themes/switch/images/pattern/pattern1.png" alt="bootstrap business templates" class="active"></a>
 		<a href="themes/css/#" name="pattern2"><img src="themes/switch/images/pattern/pattern2.png" alt="bootstrap business templates"></a>

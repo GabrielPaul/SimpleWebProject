@@ -373,7 +373,7 @@
 				<a href="http://www.suning.com/"><img width="60" height="60" src="themes/images/suning.png" title="苏宁易购" alt="苏宁易购"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; 旧物新用</p>
+		<p class="pull-right">&copy; 咸鱼杂货</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
