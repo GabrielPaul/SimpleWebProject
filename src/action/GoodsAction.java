@@ -78,7 +78,7 @@ public class GoodsAction extends ActionSupport{
 		this.imagesFileName = imagesFileName;
 	}
 	/**
-	 * 添加goods用到的方法
+	 * 锟斤拷锟絞oods锟矫碉拷锟侥凤拷锟斤拷
 	 * @param
 	 * @return String SUCCESS
 	 */
@@ -98,6 +98,7 @@ public class GoodsAction extends ActionSupport{
 		for(int i=0;i<changedPicPath.size();i++)	System.out.println(changedPicPath.get(i));
 		goods.setPictures(changedPicPath);
 		goods.setCategory(getCategory(category));
+		System.out.println(goods.getGoodsName());
 		goodsService.addGoods(goods);
 		return SUCCESS;
 	}
@@ -123,21 +124,21 @@ public class GoodsAction extends ActionSupport{
 	static Category getCategory(String category) {
 		Category ret = null;
 		switch(category) {
-			case "书籍": ret = Category.book;
+			case "涔︾睄": ret = Category.book;
 				break;
-			case "衣物": ret = Category.cloth;
+			case "琛ｇ墿": ret = Category.cloth;
 				break;
-			case "鞋子": ret = Category.shoose;
+			case "闉嬪瓙": ret = Category.shoose;
 				break;
-			case "裤子": ret = Category.pants;
+			case "瑁ゅ瓙": ret = Category.pants;
 				break;
-			case "运动相关": ret = Category.sportThings;
+			case "杩愬姩鐩稿叧": ret = Category.sportThings;
 				break;
-			case "生活用品": ret = Category.routinThings;
+			case "鐢熸椿鐢ㄥ搧": ret = Category.routinThings;
 				break;
-			case "数码产品": ret = Category.digitalProduct;
+			case "鏁扮爜浜у搧": ret = Category.digitalProduct;
 				break;
-			case "其他": ret = Category.other;
+			case "鍏朵粬": ret = Category.other;
 				break;
 		}
 		return ret;

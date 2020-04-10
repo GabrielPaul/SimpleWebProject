@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close"
 		p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost/spring"
+		p:jdbcUrl="jdbc:mysql://localhost/spring?useUnicode=true&amp;characterEncoding=UTF-8"
 		p:user="root"
 		p:password="LIUTAO123"
 		p:maxPoolSize="40"

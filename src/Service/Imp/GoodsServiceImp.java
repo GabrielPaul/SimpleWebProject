@@ -16,7 +16,7 @@ import Dao.GoodsDao;
 public class GoodsServiceImp implements GoodsService{
 	private GoodsDao goodsDao;
 	private SellerDao sellerDao;
-	//×¢ÈëgoodsDaoËùÐèµÄset·½·¨
+	//×¢ï¿½ï¿½goodsDaoï¿½ï¿½ï¿½ï¿½ï¿½setï¿½ï¿½ï¿½ï¿½
 	public void setGoodsDao(GoodsDao goodsDao) {
 		this.goodsDao = goodsDao;
 	}
@@ -37,14 +37,14 @@ public class GoodsServiceImp implements GoodsService{
 
 	@Override
 	public void underCarriageGoods(int goodsId) {
-		//¼ÓÔØ³Ö¾Ã»¯ÊµÌå£¬ÐÞ¸Äºó²»ÐèÒªupdate
+		//ï¿½ï¿½ï¿½Ø³Ö¾Ã»ï¿½Êµï¿½å£¬ï¿½Þ¸Äºï¿½ï¿½ï¿½Òªupdate
 		Goods goods = goodsDao.get(Goods.class, goodsId);
 		goodsDao.underCarriageGoods(goods);
 	}
 
 	@Override
 	public void setOnsellingGoods(int goodsId) {
-		//¼ÓÔØ³Ö¾Ã»¯ÊµÌå£¬ÐÞ¸Äºó²»ÐèÒªupdate
+		//ï¿½ï¿½ï¿½Ø³Ö¾Ã»ï¿½Êµï¿½å£¬ï¿½Þ¸Äºï¿½ï¿½ï¿½Òªupdate
 		Goods goods = goodsDao.get(Goods.class, goodsId);
 		goodsDao.setOnsellingGoods(goods);
 	}
@@ -62,15 +62,15 @@ public class GoodsServiceImp implements GoodsService{
 	}
 
 	/**
-	 * @param iamges Í¼Æ¬ÎÄ¼þ¼¯ºÏ
-	 * @param imagesContextType Í¼Æ¬ÀàÐÍ¼¯ºÏ
-	 * @param imagesFileName Í¼Æ¬Ãû¼¯ºÏ
+	 * @param iamges Í¼Æ¬ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param imagesContextType Í¼Æ¬ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½
+	 * @param imagesFileName Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return List picturePath
 	 */
 	@Override
 	public List<String> getPicName(List<File> images,
 			List<String> imagesContextType, List<String> imagesFileName,Seller seller) {
-		//ÉèÖÃÉÏ´«Í¼Æ¬±¸·ÝÂ·¾¶
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 		String backupPath = "C:\\Users\\Administrator\\Desktop\\new_file\\images";
 		List<String> changedFileName = new ArrayList<String>();
 		for(int i=0;i < images.size();i++){
@@ -79,10 +79,10 @@ public class GoodsServiceImp implements GoodsService{
 			System.out.println(dstPath);
 			File dstFile = new File(dstPath);
 			if(!dstFile.exists()){
-				dstFile.mkdirs();											//´´½¨¶à¼¶Ä¿Â¼
-				CopyDirection.picCopy(backupPath, dstFile.getAbsolutePath()); 				//´Ó±¸·ÝÎÄ¼þ¿½±´µ½²¿ÊðÂ·¾¶
+				dstFile.mkdirs();											//ï¿½ï¿½ï¿½ï¿½ï¿½à¼¶Ä¿Â¼
+				CopyDirection.picCopy(backupPath, dstFile.getAbsolutePath()); 				//ï¿½Ó±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 			}
-			File dstFilePic = new File(dstPath,changedFileName.get(i));		//ÔÚ²¿ÊðÂ·¾¶´´½¨picÎÄ¼þ¶ÔÏó
+			File dstFilePic = new File(dstPath,changedFileName.get(i));		//ï¿½Ú²ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½picï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(!dstFilePic.exists()) {
 				try {
 					dstFilePic.createNewFile();
@@ -91,8 +91,8 @@ public class GoodsServiceImp implements GoodsService{
 					e.printStackTrace();
 				}
 			}
-			CopyDirection.picCopy(images.get(i),dstFilePic);				//¿½±´ÎÄ¼þÄÚÈÝ
-			CopyDirection.picCopy(images.get(i),new File(backupPath,changedFileName.get(i)));	//±¸·ÝÎÄ¼þ
+			CopyDirection.picCopy(images.get(i),dstFilePic);				//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+			CopyDirection.picCopy(images.get(i),new File(backupPath,changedFileName.get(i)));	//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 		}
 		return changedFileName;
 	}
