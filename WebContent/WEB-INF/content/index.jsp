@@ -190,7 +190,7 @@
 				  <s:if test="#st.count==1"> 
 					<div class="item active" >
 						<div class="container">			  
-							<a href="product_details.jsp">
+							<a href="product_details?detailsGoodsPic=<s:property />">
 								<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
 							</a>
 							<!-- 标题 -->
@@ -201,7 +201,7 @@
 				  <s:if test="#st.count>1"> 
 					<div class="item" >
 						<div class="container">			  
-							<a href="product_details.jsp">
+							<a href="product_details?detailsGoodsPic=<s:property />">
 								<img style="width: 100%"  src="<s:property />"  alt="special offers"/>
 							</a>
 							<!-- 标题 -->

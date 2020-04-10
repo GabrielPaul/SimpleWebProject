@@ -36,4 +36,6 @@ public interface GoodsDao extends BaseDao<Goods>{
 	 * 通过goodsID查找并返回Goods
 	 */
 	List<Goods> getGoodsById(int id);
+
+	List<Goods> fingByPic(String detailsGoodsPic);
 }

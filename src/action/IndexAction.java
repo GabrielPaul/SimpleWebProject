@@ -15,7 +15,25 @@ public class IndexAction extends ActionSupport{
 	List<String> newOnShelvesPic=new ArrayList<>();
 	List<String> carouelPic=new ArrayList<>();
 	List<String> recommandPic=new ArrayList<>();
+	private String detailsGoodsPic;
+	private Goods goods_detail;
 	
+	public Goods getGoods_detail() {
+		return goods_detail;
+	}
+
+	public void setGoods_detail(Goods goods_detail) {
+		this.goods_detail = goods_detail;
+	}
+
+	public String getDetailsGoodsPic() {
+		return detailsGoodsPic;
+	}
+
+	public void setDetailsGoodsPic(String detailsGoodsPic) {
+		this.detailsGoodsPic = detailsGoodsPic;
+	}
+
 	public GoodsService getGoodsService() {
 		return goodsService;
 	}
@@ -82,16 +100,29 @@ public class IndexAction extends ActionSupport{
 				String str = temp.get(j);
 				String []strSplit =str.split("\\.");
 				str=strSplit[0]+"_"+strSplit[1];
-				System.out.println(str); 
+				//System.out.println(str); 
 				carouelPic.add(str);
 			}
 		}
 		
-		
-		//carouelPic.add("2_jpg");
-		//carouelPic.add("gabriel_1494221729732_jpg");
-		//carouelPic.add("gabriel_1586419634075_jpg");
 		return SUCCESS;
 	}
 
+	public String showProductDetails(){
+		String subStr1,subStr2;
+		String saveOldStriPic;
+		List<Goods> goodslist= new ArrayList<Goods>();
+		
+		saveOldStriPic=detailsGoodsPic;
+		subStr1 = detailsGoodsPic.substring(0, detailsGoodsPic.length()-4);
+		subStr2 = detailsGoodsPic.substring(detailsGoodsPic.length()-3, detailsGoodsPic.length());
+		detailsGoodsPic = subStr1+"."+subStr2;
+		//System.out.println(detailsGoodsPic +" from showProductDetails"); 
+		goodslist = goodsService.findGoodsByPic(detailsGoodsPic);
+		detailsGoodsPic=saveOldStriPic;
+		goods_detail = goodslist.get(0);
+		System.out.println(goods_detail.getGoodsName() +" from showProductDetails");
+		return SUCCESS;
+	}
+	
 }

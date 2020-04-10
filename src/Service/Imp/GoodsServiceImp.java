@@ -123,4 +123,10 @@ public class GoodsServiceImp implements GoodsService{
 		// TODO Auto-generated method stub
 		return goodsDao.fingGoods(seller, state);
 	}
+
+	@Override
+	public List<Goods> findGoodsByPic(String detailsGoodsPic) {
+		// TODO Auto-generated method stub
+		return goodsDao.fingByPic(detailsGoodsPic);
+	}
 }

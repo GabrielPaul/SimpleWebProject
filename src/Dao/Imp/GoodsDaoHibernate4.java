@@ -46,5 +46,11 @@ public class GoodsDaoHibernate4 extends BaseDaoHibernate4<Goods> implements Good
 		return find("select p from Goods p where p.goodID = ?0",id);
 	}
 
+	@Override
+	public List<Goods> fingByPic(String detailsGoodsPic) {
+		// TODO Auto-generated method stub
+		return find("select p from Goods p where'"+detailsGoodsPic+"' in elements(p.pictures)");
+	}
+
 
 }

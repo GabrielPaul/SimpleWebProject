@@ -23,5 +23,7 @@ public interface GoodsService{
 	List<Goods> getCarouselGoods();
 	
 	List<Goods> fingGoodsBySeller(Seller seller,boolean state);
+
+	List<Goods> findGoodsByPic(String detailsGoodsPic);
 	
 }
