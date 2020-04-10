@@ -25,5 +25,9 @@ public interface GoodsService{
 	List<Goods> fingGoodsBySeller(Seller seller,boolean state);
 
 	List<Goods> findGoodsByPic(String detailsGoodsPic);
+
+	List<Goods> getGoodsByPage(int pageSize, int pageNow);
+
+	long getTotalEntry();
 	
 }

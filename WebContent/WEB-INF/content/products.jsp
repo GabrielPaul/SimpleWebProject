@@ -181,7 +181,6 @@
 	<div class="row">
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<!--div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div-->
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
                      <li><a href="products.html">全部商品</a></li>
 			<li class="subMenu open"><a> 电子产品</a>
@@ -243,7 +242,7 @@
 <!-- Sidebar end=============================================== -->
 
 	<div class="span9">
-	<h3>全部商品 <small class="pull-right"> 共有100件商品</small></h3>	
+	<h3>全部商品 <small class="pull-right"> 共有<s:property value="totalEntry"/>件商品</small></h3>	
 	
 	<hr class="soft"/>
 	<!--  
@@ -265,234 +264,71 @@
  <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
  <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
 </div>
+
 <br class="clr"/>
 <div class="tab-content">
-	<div class="tab-pane" id="listView">
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/9.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-			
-				</form>
-			</div>
-		</div>
-		<hr class="soft"/>
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/10.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-			</form>
-			</div>
-		</div>
-		<hr class="soft"/>
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/11.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				
-			</form>
-			</div>
-		</div>
-		<hr class="soft"/>
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/12.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				</form>
-			</div>
-		</div>
-	
-		<hr class="soft"/>
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/13.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				</form>
-			</div>
-		</div>
-		<hr class="soft"/>
-		<div class="row">	  
-			<div class="span2">
-				<img src="themes/images/products/46.jpg" alt=""/>
-			</div>
-			<div class="span4">
-				<h3>产品名称</h3>				
-				<hr class="soft"/>		
-				<p>
-				产品介绍
-				</p>
-				<a class="btn btn-small pull-right" href="product_details.html">更多描述</a>
-				<br class="clr"/>
-			</div>
-			<div class="span3 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> ?222</h3>
-			<br/>
-			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
-			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				</form>
-			</div>
-		</div>
-		<hr class="soft"/>
-	</div>
-
+<br class="clr"/>
 	<div class="tab-pane  active" id="blockView">
 		<ul class="thumbnails">
+		<s:iterator value="allGoodsPagesOnSale"  status='st' id="g">
+		
 			<li class="span3">
 			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/b1.jpg" alt=""/></a>
+				<a href="product_details?detailsGoodsPic=<s:property value="#g.pictures[0].replace('.','_')"/>">
+					<img src=<s:property value="#g.pictures[0].replace('.','_')"/> alt=""/>
+				</a>
 				<div class="caption">
-				  <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
+				  <h5 >品名:<s:property value="#g.goodsName"/></h5>
+				  <p class="pull-left"> 
+					描述：<s:property value="#g.description"/>
+				  </p><br/>
+				   <h4 style="text-align:center">
+					   <a class="btn" href="product_details?detailsGoodsPic=<s:property value="#g.pictures[0].replace('.','_')"/>"> 
+					   		<i class="icon-zoom-in"></i>
+					   	</a> 
+					   <a class="btn" href="#" disabled="true"><s:property value="%{formatDouble(#g.price)}"/></a>
+					   <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> 
+				   </h4>
+				   <small class="pull-center"> 共有1件商品</small>
 				</div>
 			  </div>
 			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/b2.jpg" alt=""/></a>
-				<div class="caption">
-				   <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/b3.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/3.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/1.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/2.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>产品名称</h5>
-				  <p> 
-					卖家地址
-				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">添加<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">?222</a></h4>
-				</div>
-			  </div>
-			</li>
+			</s:iterator>
 		  </ul>
-	<hr class="soft"/>
+			<hr class="soft"/>
+	</div>
+
+	<div class="tab-pane" id="listView">
+		<s:iterator value="allGoodsPagesOnSale"  status='st' id="g">
+			<div class="row">	  
+				<div class="span2">
+					<a href="product_details?detailsGoodsPic=<s:property value="#g.pictures[0].replace('.','_')"/>">
+						<img src=<s:property value="#g.pictures[0].replace('.','_')"/> alt=""/>
+					</a>
+				</div>
+				<div class="span4">
+					<h3>品名:<s:property value="#g.goodsName"/></h3>				
+					<hr class="soft"/>		
+					<p>
+					描述：<s:property value="#g.description"/>
+					</p>
+					<a class="btn btn-small pull-right" 
+					href="product_details?detailsGoodsPic=<s:property value="#g.pictures[0].replace('.','_')"/>">详细信息</a>
+					<br class="clr"/>
+				</div>
+				<div class="span3 alignR">
+				<form class="form-horizontal qtyFrm">
+				<h3> ?222</h3>
+				<br/>
+				
+				  <a href="product_details.html" class="btn btn-large btn-primary"> 添加 <i class=" icon-shopping-cart"></i></a>
+				  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+				
+					</form>
+				</div>
+			</div>
+			<hr class="soft"/>
+		</s:iterator>
 	</div>
 </div>
 

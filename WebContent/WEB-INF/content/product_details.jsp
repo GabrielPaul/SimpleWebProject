@@ -32,6 +32,7 @@
   </head>
   
 <body>
+<!-- 
 	detailsGoodsPic:<s:property value="detailsGoodsPic"/><br/>
 	goodsName:<s:property value="goods_detail.goodsName"/><br/>
 	ownerSeller:<s:property value="goods_detail.ownerSeller"/><br/>
@@ -42,7 +43,7 @@
 	description:<s:property value="goods_detail.description"/><br/>
 	state:<s:property value="goods_detail.state"/><br/>
 	buyer:<s:property value="goods_detail.buyer"/><br/>
-	
+ -->	
     <!-- 最顶层================================================== -->
 <div id="header">
 <div class="container">
@@ -252,21 +253,20 @@
 				<img src=<s:property value="detailsGoodsPic"/> style="width:100%" alt="full picture of <s:property value="goods_detail.goodsName"/>"/><!-- Fujifilm FinePix S2950 Digital Camera -->
             </a>
 			<div id="differentview" class="moreOptopm carousel slide">
+			<!-- 
                 <div class="carousel-inner">
                   <div class="item active">
                    <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
                    <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
                    <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
                   </div>
-                  <!-- 
                   <div class="item">
                    <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
                    <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
                    <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
                   </div>
-                  -->
                 </div>
-                
+               --> 
 			  <!--               
 			  <a class="left carousel-control" href="themes/images/products/large/f1.jpg" data-slide="prev">‹</a>
               <a class="right carousel-control" href="themes/images/products/large/f1.jpg" data-slide="next">›</a> 
@@ -289,7 +289,7 @@
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
-					<label class="control-label"><span>¥ <s:property value="goods_detail.price"/></span></label>
+					<label class="control-label"><span><s:property value="%{formatDouble(goods_detail.price)}"/></span></label>
 					<div class="controls">
 					  <input type="number" class="span1" placeholder="数量"/>
 					  <button type="submit" class="btn btn-large btn-primary pull-right"> 添加 <i class=" icon-shopping-cart"></i></button>

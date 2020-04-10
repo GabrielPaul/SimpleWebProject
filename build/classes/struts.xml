@@ -60,7 +60,9 @@
 		<action name="product_details" class="action.IndexAction" method="showProductDetails">
 			<result>WEB-INF/content/product_details.jsp</result>
 		</action>		
-		
+		<action name="getAllProducts" class="action.IndexAction" method="getAllProducts">
+			<result>WEB-INF/content/products.jsp</result>
+		</action>		
 		<!-- 直接跳转的请求 -->
 		<action name="registerForSelling">
 			<result>WEB-INF/content/registerForSelling.jsp</result></action>

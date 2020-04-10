@@ -129,4 +129,16 @@ public class GoodsServiceImp implements GoodsService{
 		// TODO Auto-generated method stub
 		return goodsDao.fingByPic(detailsGoodsPic);
 	}
+
+	@Override
+	public List<Goods> getGoodsByPage(int pageSize, int pageNow) {
+		// TODO Auto-generated method stub
+		return goodsDao.findByPage(pageSize,pageNow);
+	}
+
+	@Override
+	public long getTotalEntry() {
+		// TODO Auto-generated method stub
+		return goodsDao.findTotalEntry(true);
+	}
 }

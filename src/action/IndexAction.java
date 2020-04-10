@@ -1,5 +1,6 @@
 package action;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,33 @@ public class IndexAction extends ActionSupport{
 	List<String> recommandPic=new ArrayList<>();
 	private String detailsGoodsPic;
 	private Goods goods_detail;
+	private List<Goods> allGoodsPagesOnSale = new ArrayList<Goods>();
+	private String pageNow;
+	private long totalEntry;	//total onSale goods
+
+	public long getTotalEntry() {
+		return totalEntry;
+	}
+
+	public void setTotalEntry(long totalEntry) {
+		this.totalEntry = totalEntry;
+	}
+
+	public String getPageNow() {
+		return pageNow;
+	}
+
+	public void setPageNow(String pageNow) {
+		this.pageNow = pageNow;
+	}
+
+	public List<Goods> getAllGoodsPagesOnSale() {
+		return allGoodsPagesOnSale;
+	}
+
+	public void setAllGoodsPagesOnSale(List<Goods> allGoodsPagesOnSale) {
+		this.allGoodsPagesOnSale = allGoodsPagesOnSale;
+	}
 	
 	public Goods getGoods_detail() {
 		return goods_detail;
@@ -121,8 +149,33 @@ public class IndexAction extends ActionSupport{
 		goodslist = goodsService.findGoodsByPic(detailsGoodsPic);
 		detailsGoodsPic=saveOldStriPic;
 		goods_detail = goodslist.get(0);
-		System.out.println(goods_detail.getGoodsName() +" from showProductDetails");
+		//debug System.out.println(goods_detail.getGoodsName() +" from showProductDetails");
 		return SUCCESS;
 	}
 	
+	public String getAllProducts(){
+		int tempPage = Integer.parseInt(pageNow);
+		totalEntry=goodsService.getTotalEntry();
+		if(totalEntry<=6) {
+			allGoodsPagesOnSale = goodsService.getGoodsByPage((int) totalEntry,tempPage);
+		}
+		else {
+			allGoodsPagesOnSale = goodsService.getGoodsByPage(6,tempPage);
+		}
+		//debug System.out.println(allGoodsPagesOnSale.size() +" allGoodsPagesOnSale"); 
+		for(int i=0;i<allGoodsPagesOnSale.size();i++) {
+			for(int j=0;j<allGoodsPagesOnSale.get(i).getPictures().size();j++) {
+				String temp = allGoodsPagesOnSale.get(i).getPictures().get(j);
+				
+			}
+		}
+		
+		return SUCCESS;
+	}
+	
+	//格式化输出价格方法
+	public String formatDouble(double s){
+		DecimalFormat fmt = new DecimalFormat("\u00A4##0.00");
+		return fmt.format(s);
+	}
 }
