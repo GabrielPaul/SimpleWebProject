@@ -75,7 +75,7 @@ public class GoodsServiceImp implements GoodsService{
 		List<String> changedFileName = new ArrayList<String>();
 		for(int i=0;i < images.size();i++){
 			changedFileName.add(seller.getUsername()+"_" + new java.util.Date().getTime()+getExtention(imagesFileName.get(i)));
-			String dstPath=ServletActionContext.getServletContext().getRealPath("/images");
+			String dstPath=ServletActionContext.getServletContext().getRealPath("/WEB-INF/images");
 			System.out.println(dstPath);
 			File dstFile = new File(dstPath);
 			if(!dstFile.exists()){
