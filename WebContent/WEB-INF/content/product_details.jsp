@@ -190,62 +190,54 @@
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
-<!-- Sidebar ================================================== -->
-	<div id="sidebar" class="span3">
-		<!--div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div-->
-		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-                     <li><a href="products.html">全部商品</a></li>
-			<li class="subMenu open"><a> 电子产品</a>
-				<ul>
-				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>手机</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>电脑</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>数码相机</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>其他</a></li>
-				</ul>
-			</li>
-			<li class="subMenu"><a> 衣物</a>
-			<ul style="display:none">
-				<li><a href="products.html"><i class="icon-chevron-right"></i>衣服</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>裤子</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>鞋子</a></li>	
-															
-			</ul>
-			</li>
-			<li class="subMenu"><a>书籍</a>
-				<ul style="display:none">
-				<li><a href="products.html"><i class="icon-chevron-right"></i>小说</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>散文</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>四六级书籍</a></li>	
-				<li><a href="products.html"><i class="icon-chevron-right"></i>考研</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>雅思托福</a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>专业书籍</a></li>												
-														
-			</ul>
-			</li>
-			<li><a href="products.html">生活用品</a></li>
-			
-		</ul>
-		<br/>
-		  <div class="thumbnail">
-                      <a href="products.html">
-			<img src="themes/images/products/panasonic.jpg" alt="数码相机" /></a>
-			<div class="caption">
-			  <h5>数码相机</h5>
-				<h4 style="text-align:center"><a class="btn" href="#">添加商品<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">¥222.00</a></h4>
-			</div>
-		  </div><br/>
-			<div class="thumbnail">
-                             <a href="products.html"> 
-				<img src="themes/images/products/46.jpg" title="Bootshop New Kindel" alt="Bootshop Kindel"></a>
-				<div class="caption">
-				  <h5>四六级词汇精讲</h5>
-				    <h4 style="text-align:center"><!--a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a--> <a class="btn" href="#">添加商品 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">¥222.00</a></h4>
+				<!-- Sidebar ================================================== -->
+				<div id="sidebar" class="span3">
+					<!--div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div-->
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">
+						<li><a href="getAllProducts?pageNow=1">全部商品</a></li>
+						<!-- 
+							<li class="subMenu open"><a>教材/课外书</a>
+								<ul>
+									<li><a class="active" href="products.jsp">><i
+											class="icon-chevron-right"></i>衣物
+									</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>鞋子靴子</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>裤袜裙子</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>运动相关</a></li>
+								</ul>
+							</li>
+						 -->
+						<li ><a href="quary_productsLike?category=书籍"> 书籍</a></li>
+						<li ><a href="quary_productsLike?category=衣物">衣物</a></li>
+						<li ><a href="quary_productsLike?category=鞋子">鞋子</a></li>
+						<li ><a href="quary_productsLike?category=裤子">裤子</a></li>
+						<li ><a href="quary_productsLike?category=运动相关">运动相关</a></li>
+						<li ><a href="quary_productsLike?category=生活用品">生活用品</a></li>
+						<li ><a href="quary_productsLike?category=数码产品">数码产品</a></li>
+						<li ><a href="quary_productsLike?category=其他">其他</a></li>
+					</ul>
+					<br />
+					<!-- 广告栏 -->
+					<div>
+						<div class="caption" align="center"><h2>广告</h2></div>
+						<s:iterator value="adsPic"  status='st'>
+							<s:if test="#st.count<=3">	<!-- 最多投放三个广告 -->
+							<div class="thumbnail">
+								<a href="product_details?detailsGoodsPic=<s:property />"> <img
+									src="<s:property />" alt="数码相机" /></a>
+								<div class="caption">
+									<h5 style="text-align: center"><s:property value="adsOnShelves.get(#st.count-1).goodsName"/></h5>
+								</div>
+							</div>
+							<br />
+							</s:if>
+						</s:iterator>
+					</div>
 				</div>
-			  </div><br/>
-			
-	</div>
-
-<!-- Sidebar end=============================================== -->
+				<!-- Sidebar end=============================================== -->
 	<div class="span9">
 	<div class="row">	  
 			<div id="gallery" class="span3">
