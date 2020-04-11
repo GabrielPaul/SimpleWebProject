@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 2016-12-1, 0:04:03
-    Author     : dell
---%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ page pageEncoding="utf-8" language="java" errorPage=""%>
@@ -115,23 +110,34 @@
 					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
 					<form class="form-inline navbar-search" method="post"
-						action="#quary_products.jsp">
-						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
+						action="quary_productsLike">
+						<input id="srchFld" class="srchTxt" type="text" name="likeString" />
 						<!-- 输入查询框 -->
-						<select class="srchTxt" name="inputselect1">
+						<select class="srchTxt" name="category">
 							<!-- 物品分类选择框 -->
-							<option>全部</option>
-							<option>书籍</option>
-							<option>手机</option>
-							<option>电脑</option>
-							<option>衣物</option>
-							<option>生活用品</option>
+							<option value="全部商品">全部商品</option>
+							<option value="书籍">书籍</option>
+							<option value="鞋子">鞋子</option>
+							<option value="裤子">裤子</option>
+							<option value="运动相关">运动相关</option>
+							<option value="生活用品">生活用品</option>
+							<option value="数码产品">数码产品</option>
+							<option value="其他">其他</option>
 						</select>
 						<button type="submit" id="submitButton" class="btn btn-primary">查询</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
+						<%
+							if (sellerName == null) {
+						%>
 						<li><a href="registerForSelling">成为卖家</a></li>
+						<% }%>
+						<%
+							if (sellerName != null) {
+						%>
 						<li><a href="product_sell">上架物品</a></li>
+						<% }%>						
+						
 						<li><a href="#">浏览记录</a></li>
 						<li><a href="contact">建议</a></li>
 						<%
@@ -226,102 +232,47 @@
 					<!--div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div-->
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li><a href="getAllProducts?pageNow=1">全部商品</a></li>
-						<li class="subMenu open"><a>教材/课外书</a>
-							<ul>
-								<li><a class="active" href="products.jsp">><i
-										class="icon-chevron-right"></i>衣物
-								</a></li>
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>鞋子靴子</a></li>
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>裤袜裙子</a></li>
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>运动相关</a></li>
-							</ul></li>
-						<li class="subMenu"><a> 衣物</a>
-							<ul style="display: none">
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>衣服</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>裤子</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>鞋子</a></li>
-
-							</ul></li>
-						<li class="subMenu"><a>鞋子靴子</a>
-							<ul style="display: none">
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>小说</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>散文</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>四六级书籍</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>考研</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>雅思托福</a></li>
-								<li><a href="products.jsp"><i
-										class="icon-chevron-right"></i>专业书籍</a></li>
-
-							</ul></li>
-						<li class="subMenu"><a>运动相关</a>
-							<ul style="display: none">
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>日常用品</a></li>
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>其他</a></li>
-							</ul></li>
-						<li class="subMenu"><a>日常用品</a>
-							<ul style="display: none">
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>日常用品</a></li>
-								<li><a href="products.html"><i
-										class="icon-chevron-right"></i>其他</a></li>
-							</ul></li>
-						<li><a href="products.jsp">其他</a></li>
+						<!-- 
+							<li class="subMenu open"><a>教材/课外书</a>
+								<ul>
+									<li><a class="active" href="products.jsp">><i
+											class="icon-chevron-right"></i>衣物
+									</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>鞋子靴子</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>裤袜裙子</a></li>
+									<li><a href="products.html"><i
+											class="icon-chevron-right"></i>运动相关</a></li>
+								</ul>
+							</li>
+						 -->
+						<li ><a href="quary_productsLike?category=书籍"> 书籍</a></li>
+						<li ><a href="quary_productsLike?category=衣物">衣物</a></li>
+						<li ><a href="quary_productsLike?category=鞋子">鞋子</a></li>
+						<li ><a href="quary_productsLike?category=裤子">裤子</a></li>
+						<li ><a href="quary_productsLike?category=运动相关">运动相关</a></li>
+						<li ><a href="quary_productsLike?category=生活用品">生活用品</a></li>
+						<li ><a href="quary_productsLike?category=数码产品">数码产品</a></li>
+						<li ><a href="quary_productsLike?category=其他">其他</a></li>
 					</ul>
 					<br />
-					<div class="thumbnail">
-						<a href="product_details.jsp"> <img
-							src="themes/images/products/panasonic.jpg" alt="数码相机" /></a>
-						<div class="caption">
-							<h5>数码相机</h5>
-							<h4 style="text-align: center">
-								<a class="btn" href="product_summary.jsp">添加<i
-									class="icon-shopping-cart"></i></a> &nbsp; &nbsp; &nbsp; &nbsp; ¥
-								222.00
-							</h4>
-						</div>
+					<!-- 广告栏 -->
+					<div>
+						<div class="caption" align="center"><h2>广告</h2></div>
+						<s:iterator value="adsPic"  status='st'>
+							<s:if test="#st.count<=3">	<!-- 最多投放三个广告 -->
+							<div class="thumbnail">
+								<a href="product_details?detailsGoodsPic=<s:property />"> <img
+									src="<s:property />" alt="数码相机" /></a>
+								<div class="caption">
+									<h5 style="text-align: center"><s:property value="adsOnShelves.get(#st.count-1).goodsName"/></h5>
+								</div>
+							</div>
+							<br />
+							</s:if>
+						</s:iterator>
 					</div>
-					<br />
-					<div class="thumbnail">
-						<a href="product_details.jsp"> <img
-							src="themes/images/products/46.jpg" title="Bootshop New Kindel"
-							alt="Bootshop Kindel"></a>
-						<div class="caption">
-							<h5>四六级词汇精讲</h5>
-							<h4 style="text-align: center">
-								<a class="btn" href="product_summary.jsp">添加<i
-									class="icon-shopping-cart"></i></a> &nbsp; &nbsp; &nbsp; &nbsp; ¥
-								222.00
-							</h4>
-						</div>
-					</div>
-					<br />
-					<div class="thumbnail">
-						<a href="product_details.jsp"> <img
-							src="themes/images/products/13.jpg" title="Bootshop New Kindel"
-							alt="Bootshop Kindel"></a>
-						<div class="caption">
-							<h5>精品手表</h5>
-							<h4 style="text-align: center">
-								<a class="btn" href="product_summary.jsp">添加<i
-									class="icon-shopping-cart"></i></a> &nbsp; &nbsp; &nbsp; &nbsp; ¥
-								222.00
-							</h4>
-						</div>
-					</div>
-					<br />
 				</div>
 				<!-- Sidebar end=============================================== -->
 				<div class="span9">
@@ -335,129 +286,63 @@
 							<!-- 轮播====================== -->
 							<div id="featured" class="carousel slide">
 								<div class="carousel-inner">
-									<div class="item active">
-										<div class="containner">
-											<ul class="thumbnails">
-												<li class="span3">
-													<div class="thumbnail">
-														<i class="tag"></i>
-														<!--新商品标记-->
-														<a href="product_details.jsp"><img
-															src="themes/images/products/b1.jpg" alt=""></a>
-														<div class="caption">
-															<h5>精品辣条</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-
-														<a href="product_details.jsp"><img
-															src="themes/images/products/b2.jpg" alt=""></a>
-														<div class="caption">
-															<h5>沐浴露</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-														<i class="tag"></i> <a href="product_details.jsp"><img
-															src="themes/images/products/b3.jpg" alt=""></a>
-														<div class="caption">
-															<h5>小清新夹克</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-
-														<a href="product_details.jsp"><img
-															src="themes/images/products/b4.jpg" alt=""></a>
-														<div class="caption">
-															<h5>宿舍除味剂</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-											</ul>
+										<div class="item active">
+											<div class="containner">
+												<ul class="thumbnails">
+													<s:iterator value="recomGoodsPic"  status='st'>
+														<s:if test="#st.count<=4">
+															<li class="span3">
+																<div class="thumbnail">
+																	<i class="tag"></i>
+																	<a href="product_details?detailsGoodsPic=<s:property />"><img
+																		 src="<s:property />" alt=""></a>
+																	<div class="caption">
+																		<h5>
+																			<s:property value="recommandlGoods.get(#st.count-1).goodsName"/>
+																		</h5>
+																			<h4><a class="btn disabled" >
+																				<span class="pull-center">
+																				<s:property value="%{formatDouble(recommandlGoods.get(#st.count-1).price)}"/>	
+																			</span></a>
+																			<a class="btn" href="#">&nbsp;添加&nbsp;<i
+																				class="icon-shopping-cart"></i></a> 																			
+																			</h4>
+																	</div>
+																</div>
+															</li>
+														</s:if>
+													</s:iterator>
+												</ul>
+											</div>
 										</div>
-									</div>
-
-									<div class="item">
-										<div class="containner">
-											<ul class="thumbnails">
-												<li class="span3">
-													<div class="thumbnail">
-														<i class="tag"></i> <i class="tag"></i> <a
-															href="product_details.jsp"><img
-															src="themes/images/products/9.jpg" alt=""></a>
-														<div class="caption">
-															<h5>爱之花仙子</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-														<a href="product_details.jsp"><img
-															src="themes/images/products/10.jpg" alt=""></a>
-														<div class="caption">
-															<h5>情侣小熊</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-														<i class="tag"></i> <a href="product_details.jsp"><img
-															src="themes/images/products/11.jpg" alt=""></a>
-														<div class="caption">
-															<h5>星空之爱</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="thumbnail">
-														<a href="product_details.jsp"><img
-															src="themes/images/products/1.jpg" alt=""></a>
-														<div class="caption">
-															<h5>另一只眼</h5>
-															<h4>
-																<span class="pull-center">&nbsp; &nbsp;&nbsp;
-																	&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;¥ 222.00</span>
-															</h4>
-														</div>
-													</div>
-												</li>
-											</ul>
+										<div class="item">
+											<div class="containner">
+												<ul class="thumbnails">
+														<s:iterator value="recomGoodsPic"  status='st'>
+															<s:if test="#st.count>4">												
+																<li class="span3">
+																	<div class="thumbnail">
+																		<i class="tag"></i> <i class="tag"></i> <a
+																			href="product_details?detailsGoodsPic=<s:property />"><img
+																			 src="<s:property />" alt=""></a>
+																		<div class="caption">
+																			<h5><s:property value="recommandlGoods.get(#st.count-1).goodsName"/></h5>
+																			<h4><a class="btn disabled" >
+																				<span class="pull-center">
+																				<s:property value="%{formatDouble(recommandlGoods.get(#st.count-1).price)}"/>	
+																			</span></a>
+																			<a class="btn" href="#">&nbsp;添加&nbsp;<i
+																				class="icon-shopping-cart"></i></a> 																			
+																			</h4>
+																		</div>
+																	</div>
+																</li>
+															</s:if>
+														</s:iterator>													
+												</ul>
+											</div>
 										</div>
-									</div>
-
+									
 								</div>
 								<a class="left carousel-control" href="#featured"
 									data-slide="prev">&lsaquo;</a> <a
@@ -467,103 +352,31 @@
 							<!-- 轮播结束 -->
 						</div>
 					</div>
+					
+					<!-- 最新上架 -->
 					<h4>最新上架</h4>
-
-
-					<!-- 固定展示栏 -->
 					<ul class="thumbnails">
-						<li class="span3">
-							<div class="thumbnail">
-								<div class="container"></div>
-								<a href="product_details.jsp"><img
-									src="themes/images/products/12.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>糖</h5>
-									<p>物品描述</p>
-
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="product_details.jsp"><img
-									src="themes/images/products/7.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>读卡器</h5>
-									<p>物品描述</p>
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="product_details.jsp"><img
-									src="themes/images/products/8.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>卡托</h5>
-									<p>物品描述</p>
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="product_details.jsp"><img
-									src="themes/images/products/9.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>花</h5>
-									<p>物品描述</p>
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="product_details.jsp"><img
-									src="themes/images/products/10.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>毛绒玩具</h5>
-									<p>物品描述</p>
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="product_details.jsp"><img
-									src="themes/images/products/11.jpg" alt="" /></a>
-								<div class="caption">
-									<h5>星空之爱</h5>
-									<p>物品描述</p>
-									<h4 style="text-align: center">
-										<a class="btn" href="product_summary.jsp">添加<i
-											class="icon-shopping-cart"></i></a> <a class="btn btn-primary">¥
-											222.00</a>
-									</h4>
-								</div>
-							</div>
-						</li>
+						<s:iterator value="newOnShelvesPic"  status='st'>
+							<s:if test="#st.count<=6">
+								<li class="span3">
+									<div class="thumbnail">
+										<div class="container"></div>
+										<a href="product_details?detailsGoodsPic=<s:property />"><img
+											src="<s:property />" alt="" /></a>
+										<div class="caption">
+											<h5><s:property value="newOnShelves.get(#st.count-1).goodsName"/></h5>
+											<p>描述：<s:property value="newOnShelves.get(#st.count-1).description"/></p>
+												<p>上架时间:<s:date name="newOnShelves.get(1).addTime"  format="yyyy-MM-dd HH:MM:ss" nice="false"  /></p>
+											<h4 style="text-align: center">
+											<a class="btn disabled" ><s:property value="%{formatDouble(newOnShelves.get(#st.count-1).price)}"/></a>
+												<a class="btn" href="#">添加<i
+													class="icon-shopping-cart"></i></a> 
+											</h4>
+										</div>
+									</div>
+								</li>
+							</s:if>
+						  </s:iterator>
 					</ul>
 
 				</div>
@@ -571,6 +384,7 @@
 		</div>
 	</div>
 	<!-- Footer ================================================================== -->
+	
 	<div id="footerSection">
 		<div class="container">
 			<div class="row">

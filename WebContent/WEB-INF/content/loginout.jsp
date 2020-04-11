@@ -1,9 +1,3 @@
-<%-- 
-    Document   : loginout
-    Created on : 2016-12-8, 16:49:03
-    Author     : dell
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

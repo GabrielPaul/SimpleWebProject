@@ -1,10 +1,10 @@
-<%-- 
-    Document   : login_def
-    Created on : 2016-12-7, 17:07:52
-    Author     : dell
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
+<%@ page pageEncoding="utf-8" language="java" errorPage=""%>
+<%
+	String buyerName = (String) session.getAttribute("buyerName");
+	String sellerName = (String) session.getAttribute("sellerName");
+%>
 <!DOCTYPE html>
 <html>
     <head>

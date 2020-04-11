@@ -9,19 +9,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>旧物新用</title>
+<title>咸鱼杂货</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<!--Less styles -->
-<!-- Other Less css file //different less files has different color scheam
-	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-	<script src="themes/js/less.js" type="text/javascript"></script> -->
-
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
 	href="themes/bootshop/bootstrap.min.css" media="screen" />
@@ -49,7 +40,7 @@
 	<!-- 最顶层================================================== -->
 	<div id="header">
 		<div class="container">
-			<div id="welcomeLine" class="row">
+		<div id="welcomeLine" class="row">
 
 			<%
 				if (buyerName == null && sellerName == null) {
@@ -79,7 +70,6 @@
 												name="seller.password" />
 										</div>
 									</div>
-									<s:token />
 									<div class="form-group">
 										<div class="col-sm-6">
 											<button type="submit" class="btn btn-success">登录</button>
@@ -118,32 +108,83 @@
 		</div>
 			<!-- 导航栏 ================================================== -->
 			<div id="logoArea" class="navbar">
-				<a id="smallScreen" data-target="#topMenu" data-toggle="collapse"
-					class="btn btn-navbar"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a>
 				<div class="navbar-inner">
 					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
-					<form class="form-inline navbar-search" method="post" action="#">
-						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
+					<form class="form-inline navbar-search" method="post"
+						action="quary_productsLike">
+						<input id="srchFld" class="srchTxt" type="text" name="likeString" />
 						<!-- 输入查询框 -->
-						<select class="srchTxt" name="inputselect1">
+						<select class="srchTxt" name="category">
 							<!-- 物品分类选择框 -->
-							<option>全部</option>
-							<option>书籍</option>
-							<option>手机</option>
-							<option>电脑</option>
-							<option>衣物</option>
-							<option>生活用品</option>
+							<option value="全部商品">全部商品</option>
+							<option value="书籍">书籍</option>
+							<option value="鞋子">鞋子</option>
+							<option value="裤子">裤子</option>
+							<option value="运动相关">运动相关</option>
+							<option value="生活用品">生活用品</option>
+							<option value="数码产品">数码产品</option>
+							<option value="其他">其他</option>
 						</select>
 						<button type="submit" id="submitButton" class="btn btn-primary">查询</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
-						<li class=""><a href="product_sell">上架物品</a></li>
-						<li class=""><a href="normal.html">出售记录</a></li>
-						<li class=""><a href="contact.html">淘宝记录</a></li>
-						<li class=""><a href="contact">投诉建议</a></li>
+						<%
+							if (sellerName == null) {
+						%>
+						<li><a href="registerForSelling">成为卖家</a></li>
+						<% }%>
+						<%
+							if (sellerName != null) {
+						%>
+						<li><a href="product_sell">上架物品</a></li>
+						<% }%>						
+						
+						<li><a href="#">浏览记录</a></li>
+						<li><a href="contact">建议</a></li>
+						<%
+							if (buyerName == null &&sellerName== null) {
+						%>
+						<li><a href="#login" role="button" data-toggle="modal"
+							style="padding-right: 0"> <span
+								class="btn btn-large btn-success">登录</span>
+						</a>
+							<div id="login" class="modal hide fade in" tabindex="-1"
+								role="dialog" aria-labelledby="login" aria-hidden="false">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+									<h3>请登录</h3>
+								</div>
+								<div class="modal-body">
+									<s:form action="verifyBuyer" enctype="multipart/form-data"
+										theme="bootstrap" cssClass="form">
+										<div class="form-group">
+											<div class="col-sm-6">
+												<s:textfield type="text" id="inputUname" placeholder="用户名"
+													name="buyer.username" class="form-control" />
+											</div>
+											<div class="col-sm-6">
+												<s:password type="password" id="inputPwd" placeholder="密码"
+													name="buyer.password" />
+											</div>
+										</div>
+										<!--<s:token /> -->
+										<div class="form-group">
+											<div class="col-sm-6">
+												<button type="submit" class="btn btn-success">登录</button>
+												<button class="btn" data-dismiss="modal" aria-hidden="true">退出</button>
+											</div>
+											<div class="col-sm-6">
+												<a href="register">&nbsp; &nbsp; 还没有账号，需要注册？</a> <a
+													href="forgetpass">&nbsp; &nbsp; 忘记密码?</a>
+											</div>
+										</div>
+									</s:form>
+								</div>
+							</div>
+						</li>
+						<%} %>
 					</ul>
 				</div>
 			</div>

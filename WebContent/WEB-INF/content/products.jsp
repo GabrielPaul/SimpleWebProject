@@ -242,7 +242,7 @@
 <!-- Sidebar end=============================================== -->
 
 	<div class="span9">
-	<h3>全部商品 <small class="pull-right"> 共有<s:property value="totalEntry"/>件商品</small></h3>	
+	<h3>类别：<s:property value="category"/> <small class="pull-right"> 共有<s:property value="totalEntry"/>件商品</small></h3>	
 	
 	<hr class="soft"/>
 	<!--  
@@ -340,8 +340,6 @@
 </div>
 
 	<!-- 页码显示 -->
-	<s:property value="totalEntry/6 +1"/>--totalEntry
-	<s:property value="pageNow"/>--pageNow-- <s:property value='pageNow =="1"'/>
 	<div class="pagination">
 			<s:if test="totalEntry/6 ==0">
 			<ul>

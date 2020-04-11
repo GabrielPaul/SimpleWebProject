@@ -323,9 +323,9 @@
                                 <tr class="techSpecRow"><td class="techSpecTD1">新旧程度：<s:property value="goods_detail.degreeOld"/></td><td class="techSpecTD2"></td></tr>
 				<tr class="techSpecRow"><td class="techSpecTD1">生产日期：</td><td class="techSpecTD2"></td></tr>
 				<tr class="techSpecRow"><td class="techSpecTD1">是否三包：</td><td class="techSpecTD2"></td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">卖家用户名：<s:property value="goods_detail.ownerSeller"/></td><td class="techSpecTD2"></td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">卖家用户名：<s:property value="goods_detail.ownerSeller.username"/></td><td class="techSpecTD2"></td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">卖家住址：</td><td class="techSpecTD2"></td></tr>
-                                 <tr class="techSpecRow"><td class="techSpecTD1">卖家联系方式：<s:property value="goods_detail.ownerSeller"/></td><td class="techSpecTD2"></td></tr>
+                                 <tr class="techSpecRow"><td class="techSpecTD1">卖家联系方式：<s:property value="goods_detail.ownerSeller.phoneNum"/></td><td class="techSpecTD2"></td></tr>
                                   <tr class="techSpecRow"><td class="techSpecTD1">卖家备注信息：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                                           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
