@@ -46,8 +46,9 @@
  -->	
     <!-- 最顶层================================================== -->
 <div id="header">
-<div class="container">
-<div id="welcomeLine" class="row">
+		<div class="container">
+		<div id="welcomeLine" class="row">
+
 			<%
 				if (buyerName == null && sellerName == null) {
 			%>
@@ -112,29 +113,40 @@
 				}
 			%>
 		</div>
-<!-- 导航栏 ================================================== -->
-<div id="logoArea" class="navbar">
+			<!-- 导航栏 ================================================== -->
+			<div id="logoArea" class="navbar">
 				<div class="navbar-inner">
 					<a class="brand" href="index"><img
 						src="themes/images/logo1.png" alt="旧物新用" /></a>
 					<form class="form-inline navbar-search" method="post"
-						action="#quary_products.jsp">
-						<input id="srchFld" class="srchTxt" type="text" name="inputselect" />
+						action="quary_productsLike">
+						<input id="srchFld" class="srchTxt" type="text" name="likeString" />
 						<!-- 输入查询框 -->
-						<select class="srchTxt" name="inputselect1">
+						<select class="srchTxt" name="category">
 							<!-- 物品分类选择框 -->
-							<option>全部</option>
-							<option>书籍</option>
-							<option>手机</option>
-							<option>电脑</option>
-							<option>衣物</option>
-							<option>生活用品</option>
+							<option value="全部商品">全部商品</option>
+							<option value="书籍">书籍</option>
+							<option value="鞋子">鞋子</option>
+							<option value="裤子">裤子</option>
+							<option value="运动相关">运动相关</option>
+							<option value="生活用品">生活用品</option>
+							<option value="数码产品">数码产品</option>
+							<option value="其他">其他</option>
 						</select>
 						<button type="submit" id="submitButton" class="btn btn-primary">查询</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
+						<%
+							if (sellerName == null) {
+						%>
 						<li><a href="registerForSelling">成为卖家</a></li>
+						<% }%>
+						<%
+							if (sellerName != null) {
+						%>
 						<li><a href="product_sell">上架物品</a></li>
+						<% }%>						
+						
 						<li><a href="#">浏览记录</a></li>
 						<li><a href="contact">建议</a></li>
 						<%
@@ -183,8 +195,8 @@
 					</ul>
 				</div>
 			</div>
-</div>
-</div>
+		</div>
+	</div>
 <!-- Header End====================================================================== -->
 
 <div id="mainBody">
