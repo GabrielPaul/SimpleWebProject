@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.struts2.ServletActionContext;
 
 import tools.CopyDirection;
+import domain.Category;
 import domain.Goods;
 import domain.Seller;
 import Dao.SellerDao;
@@ -140,5 +141,64 @@ public class GoodsServiceImp implements GoodsService{
 	public long getTotalEntry() {
 		// TODO Auto-generated method stub
 		return goodsDao.findTotalEntry(true);
+	}
+
+	@Override
+	public List<Goods> getRecommandlGoods() {
+		List<Goods> ret = new ArrayList<Goods>();
+		List<Seller> sellers = new ArrayList<Seller>();
+		sellers = sellerDao.findByName("recommand");
+		for(int i=0;i<sellers.size();i++) {
+			List<Goods> tempGoods = new ArrayList<Goods>();
+			tempGoods = goodsDao.fingGoods(sellers.get(i), true);
+			for(int j=0;j<tempGoods.size();j++) {
+				ret.add(tempGoods.get(j));
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public List<Goods> getNewOnShelves() {
+		List<Goods> ret = new ArrayList<Goods>();
+		List<Goods> tempGoods = new ArrayList<Goods>();
+		tempGoods = goodsDao.findNewAdd(6);
+		for(int j=0;j<tempGoods.size();j++) {
+			ret.add(tempGoods.get(j));
+		}
+		return ret;
+	}
+
+	@Override
+	public List<Goods> getAdsOnShelves() {
+		List<Goods> ret = new ArrayList<Goods>();
+		List<Seller> sellers = new ArrayList<Seller>();
+		sellers = sellerDao.findByName("ads");
+		for(int i=0;i<sellers.size();i++) {
+			List<Goods> tempGoods = new ArrayList<Goods>();
+			tempGoods = goodsDao.fingGoods(sellers.get(i), true);
+			for(int j=0;j<tempGoods.size();j++) {
+				ret.add(tempGoods.get(j));
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public List<Goods> findGoodsByCategory(Category categoryEum) {
+		// TODO Auto-generated method stub
+		return goodsDao.findByCategory(categoryEum);
+	}
+
+	@Override
+	public List<Goods> findGoodsByCategoryLike(String likeString, Category categoryEum) {
+		// TODO Auto-generated method stub
+		return goodsDao.findByCategoryLike(likeString,categoryEum);
+	}
+
+	@Override
+	public List<Goods> findGoodsByCategoryLike(String likeString) {
+		// TODO Auto-generated method stub
+		return goodsDao.findByCategoryLike(likeString);
 	}
 }

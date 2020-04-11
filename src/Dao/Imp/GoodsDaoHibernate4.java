@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 
 import commonDaoImpl.BaseDaoHibernate4;
+import domain.Category;
 import domain.Goods;
 import domain.Seller;
 import Dao.GoodsDao;
@@ -77,6 +78,30 @@ public class GoodsDaoHibernate4 extends BaseDaoHibernate4<Goods> implements Good
 			return (long)l.get(0);
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Goods> findNewAdd(int resultNum) {
+		// TODO Auto-generated method stub
+		return find("select p from Goods p where p.state = "+true+" order by p.addTime desc");
+	}
+
+	@Override
+	public List<Goods> findByCategory(Category categoryEum) {
+		// TODO Auto-generated method stub
+		return find("select p from Goods p where p.state = ?0 and p.category=?1",true,categoryEum);
+	}
+
+	@Override
+	public List<Goods> findByCategoryLike(String likeString, Category categoryEum) {
+		// TODO Auto-generated method stub
+		return find("select p from Goods p where p.state = ?0 and p.category=?1 and p.description like '%"+likeString+"%'",true,categoryEum);
+	}
+
+	@Override
+	public List<Goods> findByCategoryLike(String likeString) {
+		// TODO Auto-generated method stub
+		return find("select p from Goods p where p.state = ?0 and p.description like '%"+likeString+"%'",true);
 	}
 
 

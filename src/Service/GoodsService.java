@@ -3,6 +3,7 @@ package Service;
 import java.io.File;
 import java.util.List;
 
+import domain.Category;
 import domain.Goods;
 import domain.Seller;
 
@@ -29,5 +30,17 @@ public interface GoodsService{
 	List<Goods> getGoodsByPage(int pageSize, int pageNow);
 
 	long getTotalEntry();
+
+	List<Goods> getRecommandlGoods();
+
+	List<Goods> getNewOnShelves();
+
+	List<Goods> getAdsOnShelves();
+
+	List<Goods> findGoodsByCategory(Category categoryEum);
+
+	List<Goods> findGoodsByCategoryLike(String likeString, Category categoryEum);
+
+	List<Goods> findGoodsByCategoryLike(String likeString);
 	
 }

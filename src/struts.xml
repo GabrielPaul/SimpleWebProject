@@ -62,7 +62,14 @@
 		</action>		
 		<action name="getAllProducts" class="action.IndexAction" method="getAllProducts">
 			<result>WEB-INF/content/products.jsp</result>
-		</action>		
+		</action>
+		<action name="quary_productsLike" class="action.IndexAction" method="quary_productsLike">
+			<result>WEB-INF/content/products.jsp</result>
+		</action>
+		<action name="quary_productsLike" class="action.IndexAction" method="quary_productsLike">
+			<result>WEB-INF/content/products.jsp</result>
+		</action>
+				
 		<!-- 直接跳转的请求 -->
 		<action name="registerForSelling">
 			<result>WEB-INF/content/registerForSelling.jsp</result></action>
@@ -79,7 +86,6 @@
 			<result>WEB-INF/content/contact.jsp</result></action>
 		<action name="register">
 			<result>WEB-INF/content/register.jsp</result></action>
-
 
 		<!-- 通配请求 -->
 		<action name="*_jpg">

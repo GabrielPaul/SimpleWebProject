@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 
 import commonDao.BaseDao;
+import domain.Category;
 import domain.Goods;
 import domain.Seller;
 
@@ -42,4 +43,12 @@ public interface GoodsDao extends BaseDao<Goods>{
 	List<Goods> findByPage(int pageSize, int pageNow);
 
 	long findTotalEntry(boolean state);
+
+	List<Goods> findNewAdd(int resultNum);
+
+	List<Goods> findByCategory(Category categoryEum);
+
+	List<Goods> findByCategoryLike(String likeString, Category categoryEum);
+
+	List<Goods> findByCategoryLike(String likeString);
 }
